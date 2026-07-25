@@ -100,13 +100,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      style={{ background: "rgba(5, 8, 18, 0.85)", backdropFilter: "blur(12px)" }}
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6"
+      style={{ background: "rgba(5, 8, 18, 0.88)", backdropFilter: "blur(14px)" }}
       role="dialog"
       aria-modal="true"
       aria-label="Kontaktný formulár"
     >
-      <div className="relative w-full max-w-lg bg-background border border-zjav/30 glow-zjav shadow-2xl animate-modal-in">
+      <div className="relative w-full sm:w-[480px] sm:max-w-[480px] sm:min-h-0 h-full sm:h-auto max-h-screen sm:max-h-[90vh] bg-background border border-zjav/30 glow-zjav shadow-2xl animate-modal-in overflow-y-auto">
         {/* Header bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border">
           <div className="flex items-center gap-3">
