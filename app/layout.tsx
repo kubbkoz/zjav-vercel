@@ -7,19 +7,25 @@ import './globals.css'
 const inter = Inter({ 
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: '--font-inter'
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true,
 });
 
 const oxanium = Oxanium({ 
   subsets: ["latin"],
   weight: ["600", "700"],
-  variable: '--font-oxanium'
+  variable: '--font-oxanium',
+  display: 'swap',
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: '--font-jetbrains'
+  variable: '--font-jetbrains',
+  display: 'swap',
+  preload: false, // not critical path
 });
 
 const siteUrl = 'https://zjav.sk'

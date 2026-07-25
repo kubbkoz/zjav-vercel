@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { AnimatedSphere } from "./animated-sphere";
+import dynamic from "next/dynamic";
+
+const AnimatedSphere = dynamic(
+  () => import("./animated-sphere").then((m) => ({ default: m.AnimatedSphere })),
+  { ssr: false, loading: () => null }
+);
 
 const words = ["zviditeľní", "predáva", "presvedčí", "posunie"];
 
