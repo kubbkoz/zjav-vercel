@@ -3,11 +3,18 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { AnimatedSphere } from "./animated-sphere";
+import dynamic from "next/dynamic";
+import { useModal } from "./modal-provider";
+
+const AnimatedSphere = dynamic(
+  () => import("./animated-sphere").then((m) => ({ default: m.AnimatedSphere })),
+  { ssr: false, loading: () => null }
+);
 
 const words = ["zviditeľní", "predáva", "presvedčí", "posunie"];
 
 export function HeroSection() {
+  const { openModal } = useModal();
   const [isVisible, setIsVisible] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -124,7 +131,8 @@ export function HeroSection() {
             }`}
           >
             <Button 
-              size="lg" 
+              size="lg"
+              onClick={openModal}
               className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-full glow-zjav font-medium group"
             >
               Chcem náhľad zadarmo
@@ -132,7 +140,8 @@ export function HeroSection() {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
+              variant="outline"
+              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
               className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
             >
               Ako to funguje

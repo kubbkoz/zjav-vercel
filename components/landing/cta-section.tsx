@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedTetrahedron } from "./animated-tetrahedron";
+import { useModal } from "./modal-provider";
 
 export function CtaSection() {
+  const { openModal } = useModal();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -73,6 +75,7 @@ export function CtaSection() {
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <Button
                     size="lg"
+                    onClick={openModal}
                     className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-full glow-zjav font-medium group"
                   >
                     Chcem náhľad zadarmo
@@ -81,6 +84,7 @@ export function CtaSection() {
                   <Button
                     size="lg"
                     variant="outline"
+                    onClick={openModal}
                     className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
                   >
                     Napíšte mi

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useModal } from "./modal-provider";
 
 const navLinks = [
   { name: "Ako to funguje", href: "#how-it-works" },
@@ -13,6 +14,7 @@ const navLinks = [
 ];
 
 export function Navigation() {
+  const { openModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -73,6 +75,7 @@ export function Navigation() {
             </a>
             <Button
               size="sm"
+              onClick={openModal}
               className={`bg-zjav hover:bg-zjav-dark text-background rounded-full glow-zjav font-medium transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
               Náhľad zadarmo
@@ -135,13 +138,13 @@ export function Navigation() {
             <Button 
               variant="outline" 
               className="flex-1 rounded-full h-14 text-base border-foreground/20"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => { setIsMobileMenuOpen(false); openModal(); }}
             >
               Kontakt
             </Button>
             <Button 
               className="flex-1 bg-zjav hover:bg-zjav-dark text-background rounded-full h-14 text-base glow-zjav"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => { setIsMobileMenuOpen(false); openModal(); }}
             >
               Náhľad zadarmo
             </Button>

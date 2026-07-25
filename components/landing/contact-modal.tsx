@@ -1,0 +1,263 @@
+"use client";
+
+import { useEffect, useRef, useState, useCallback } from "react";
+import { X, ArrowRight, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+interface ContactModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+type Status = "idle" | "sending" | "success" | "error";
+
+export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const formLoadedAtRef = useRef<number>(0);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    honeypot: "", // hidden — bots fill this
+  });
+
+  const firstInputRef = useRef<HTMLInputElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Focus trap + ESC close
+  useEffect(() => {
+    if (!isOpen) return;
+    firstInputRef.current?.focus();
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, onClose]);
+
+  // Reset on open + record form load time client-side
+  useEffect(() => {
+    if (isOpen) {
+      setStatus("idle");
+      setErrorMsg("");
+      setForm({ name: "", email: "", phone: "", message: "", honeypot: "" });
+      formLoadedAtRef.current = Date.now();
+    }
+  }, [isOpen]);
+
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target === overlayRef.current) onClose();
+    },
+    [onClose]
+  );
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "sending") return;
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, formLoadedAt: formLoadedAtRef.current }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "Niečo sa pokazilo.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setErrorMsg("Odoslanie zlyhalo. Skúste znova alebo napíšte priamo na hello@zjav.sk");
+      setStatus("error");
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      ref={overlayRef}
+      onClick={handleOverlayClick}
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6"
+      style={{ background: "rgba(5, 8, 18, 0.88)", backdropFilter: "blur(14px)" }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Kontaktný formulár"
+    >
+      <div className="relative w-full sm:w-[480px] sm:max-w-[480px] sm:min-h-0 h-full sm:h-auto max-h-screen sm:max-h-[90vh] bg-background border border-zjav/30 glow-zjav shadow-2xl animate-modal-in overflow-y-auto">
+        {/* Header bar */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-lg uppercase tracking-tight">
+              ZJAV<span className="text-zjav">_</span>
+            </span>
+            <span className="text-xs font-mono text-muted-foreground border border-zjav/20 px-2 py-0.5">
+              dopyt
+            </span>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Zavrieť"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="px-6 py-8">
+          {status === "success" ? (
+            <div className="flex flex-col items-center text-center py-8 gap-4">
+              <CheckCircle className="w-12 h-12 text-signal" />
+              <h3 className="text-xl font-display uppercase">Správa odoslaná</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+                Ozvem sa do <span className="text-foreground">24 hodín</span>. Potvrdenie sme odoslali na váš email.
+              </p>
+              <Button
+                onClick={onClose}
+                className="mt-4 bg-zjav hover:bg-zjav-dark text-background rounded-full px-8"
+              >
+                Zavrieť
+              </Button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} noValidate>
+              {/* Honeypot — hidden from real users */}
+              <input
+                type="text"
+                name="honeypot"
+                value={form.honeypot}
+                onChange={handleChange}
+                tabIndex={-1}
+                aria-hidden="true"
+                autoComplete="off"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: "1px",
+                  height: "1px",
+                  opacity: 0,
+                  pointerEvents: "none",
+                }}
+              />
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="col-span-2 sm:col-span-1">
+                    <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                      Meno <span className="text-zjav">*</span>
+                    </label>
+                    <input
+                      ref={firstInputRef}
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Ján Novák"
+                      className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors"
+                    />
+                  </div>
+                  <div className="col-span-2 sm:col-span-1">
+                    <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                      Telefón
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      placeholder="+421 9xx xxx xxx"
+                      className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                    Email <span className="text-zjav">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="jan@firma.sk"
+                    className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                    Správa <span className="text-zjav">*</span>
+                  </label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    placeholder="Opíšte váš projekt, odvetvie, čo potrebujete..."
+                    className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors resize-none"
+                  />
+                </div>
+
+                {status === "error" && (
+                  <div className="flex items-center gap-2 text-red-400 text-xs font-mono border border-red-400/20 bg-red-400/5 px-3 py-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    {errorMsg}
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between pt-2">
+                  <p className="text-xs text-muted-foreground/50 font-mono">
+                    Bez záväzku · Odpoviem do 24h
+                  </p>
+                  <Button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="bg-zjav hover:bg-zjav-dark text-background rounded-full px-6 glow-zjav font-medium group"
+                  >
+                    {status === "sending" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Odosielam...
+                      </>
+                    ) : (
+                      <>
+                        Odoslať
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
