@@ -141,10 +141,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk" className="bg-background">
-      <head>
+      <head suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          suppressHydrationWarning
         />
       </head>
       <body className={`${inter.variable} ${oxanium.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
