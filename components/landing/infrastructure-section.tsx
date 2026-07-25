@@ -52,9 +52,9 @@ export function InfrastructureSection() {
             <div className="mb-8">
               <span className="block font-mono text-zjav text-2xl mb-1">_</span>
               <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
-                Rýchly web je
+                Rýchly web
                 <br />
-                <span className="text-muted-foreground">základ.</span>
+                <span className="text-muted-foreground">je základ.</span>
                 <span className="cursor-blink ml-2">_</span>
               </h2>
             </div>
