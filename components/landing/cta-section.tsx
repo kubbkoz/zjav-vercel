@@ -57,9 +57,10 @@ export function CtaSection() {
                 </span>
 
                 <h2 className="text-4xl lg:text-7xl font-display uppercase tracking-tight mb-8 leading-[0.95]">
-                  Zviditeľnite
+                  <span className="font-mono text-zjav">&gt;_</span> Zviditeľnite
                   <br />
                   svoje podnikanie.
+                  <span className="cursor-blink ml-2">_</span>
                 </h2>
 
                 <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">

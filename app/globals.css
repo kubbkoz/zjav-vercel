@@ -111,6 +111,17 @@
     text-shadow: 0 0 40px rgba(0, 207, 255, 0.6);
   }
 
+  .cursor-blink {
+    color: var(--zjav);
+    text-shadow: 0 0 24px rgba(0, 207, 255, 0.6);
+    animation: cursor-blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+
   .glow-zjav {
     box-shadow: 0 0 16px rgba(0, 207, 255, 0.35);
   }

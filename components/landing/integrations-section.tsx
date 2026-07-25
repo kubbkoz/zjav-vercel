@@ -48,9 +48,9 @@ export function IntegrationsSection() {
             <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-6">
-            Postavené na tom
+            <span className="font-mono text-zjav">&gt;_</span> Postavené na tom
             <br />
-            najspoľahlivejšom.
+            najspoľahlivejšom.<span className="cursor-blink ml-1">_</span>
           </h2>
           <p className="text-xl text-muted-foreground">
             Moderný a overený stack — Shopware 6, Nuxt, React, Next.js a Vercel. Vrátane importu a exportu vašich dát.

@@ -50,9 +50,10 @@ export function InfrastructureSection() {
               Výkon
             </span>
             <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              Rýchly web
+              <span className="font-mono text-zjav">&gt;_</span> Rýchly web
               <br />
               je samozrejmosť.
+              <span className="cursor-blink ml-2">_</span>
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
               Weby staviam na Verceli a moderných technológiách — Next.js a Nuxt.

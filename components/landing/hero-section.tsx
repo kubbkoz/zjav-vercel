@@ -100,6 +100,7 @@ export function HeroSection() {
                 </span>
                 <span className="absolute -bottom-2 left-0 right-0 h-3 bg-zjav/20" />
               </span>
+              <span className="cursor-blink ml-2">_</span>
             </span>
           </h1>
         </div>

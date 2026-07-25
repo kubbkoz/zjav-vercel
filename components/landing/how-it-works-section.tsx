@@ -94,9 +94,10 @@ export function HowItWorksSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Tri kroky.
+            <span className="font-mono text-zjav">&gt;_</span> Tri kroky.
             <br />
             <span className="text-background/50">Web bez rizika.</span>
+            <span className="cursor-blink ml-2">_</span>
           </h2>
         </div>
 

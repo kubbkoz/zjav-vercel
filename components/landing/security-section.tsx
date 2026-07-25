@@ -59,9 +59,10 @@ export function SecuritySection() {
               Dôvera
             </span>
             <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              Bez rizika
+              <span className="font-mono text-zjav">&gt;_</span> Bez rizika
               <br />
               pre vás.
+              <span className="cursor-blink ml-2">_</span>
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
               Nemusíte platiť za mačku vo vreci. Najskôr vám ukážem prototyp

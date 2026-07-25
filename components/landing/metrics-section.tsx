@@ -109,9 +109,10 @@ export function MetricsSection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              Podmienky, ktoré
+              <span className="font-mono text-zjav">&gt;_</span> Podmienky, ktoré
               <br />
               dávajú zmysel.
+              <span className="cursor-blink ml-2">_</span>
             </h2>
           </div>
           <div className="flex items-center gap-4 font-mono text-sm text-muted-foreground">

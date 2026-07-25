@@ -121,9 +121,10 @@ export function DevelopersSection() {
               Technológie
             </span>
             <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              Pod kapotou.
+              <span className="font-mono text-zjav">&gt;_</span> Pod kapotou.
               <br />
               <span className="text-muted-foreground">Kvalitne.</span>
+              <span className="cursor-blink ml-2">_</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
               Nedostanete šablónu z internetu. Váš web staviam ručne na
