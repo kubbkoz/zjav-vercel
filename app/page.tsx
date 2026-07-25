@@ -12,12 +12,6 @@ import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
 import { FooterSection } from "@/components/landing/footer-section";
 import { ModalProvider } from "@/components/landing/modal-provider";
-import dynamic from "next/dynamic";
-
-const ScrollToTop = dynamic(
-  () => import("@/components/landing/scroll-to-top").then((m) => ({ default: m.ScrollToTop })),
-  { ssr: false }
-);
 
 export default async function Home() {
   return (
@@ -37,7 +31,6 @@ export default async function Home() {
         <CtaSection />
         <FooterSection />
       </main>
-      <ScrollToTop />
     </ModalProvider>
   );
 }
