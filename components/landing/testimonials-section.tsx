@@ -3,141 +3,132 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
-type Status = "live" | "soon";
-
-const projects: {
-  name: string;
-  url: string | null;
-  logo: string;
-  logoBg: string;
-  logoWidth: number;
-  logoHeight: number;
-  status: Status;
-  tag: string;
-}[] = [
+const projects = [
   {
     name: "robotlm.sk",
     url: "https://robotlm.sk",
     logo: "/logos/robotlm.svg",
-    logoBg: "bg-[#0d1b2a]",
-    logoWidth: 120,
-    logoHeight: 18,
-    status: "live",
+    logoWidth: 130,
+    logoHeight: 30,
+    status: "live" as const,
     tag: "Firemný web",
   },
   {
     name: "slickly.sk",
     url: "https://slickly.sk",
     logo: "/logos/slickly.png",
-    logoBg: "bg-black",
-    logoWidth: 100,
-    logoHeight: 28,
-    status: "live",
-    tag: "Firemný web",
+    logoWidth: 110,
+    logoHeight: 32,
+    status: "live" as const,
+    tag: "E-shop",
   },
   {
     name: "mtsport",
     url: null,
     logo: "/logos/mtsport.png",
-    logoBg: "bg-[#111]",
-    logoWidth: 110,
-    logoHeight: 28,
-    status: "soon",
+    logoWidth: 120,
+    logoHeight: 32,
+    status: "soon" as const,
     tag: "E-shop",
   },
   {
     name: "travel.zjav.sk",
     url: null,
     logo: "/logos/travelhub.png",
-    logoBg: "bg-[#132240]",
-    logoWidth: 120,
-    logoHeight: 32,
-    status: "soon",
+    logoWidth: 130,
+    logoHeight: 36,
+    status: "soon" as const,
     tag: "Firemný web",
   },
   {
     name: "homx.zjav.sk",
     url: null,
     logo: "/logos/homx.png",
-    logoBg: "bg-white",
-    logoWidth: 90,
-    logoHeight: 28,
-    status: "soon",
-    tag: "Startup",
+    logoWidth: 100,
+    logoHeight: 32,
+    status: "soon" as const,
+    tag: "Firemný web",
   },
   {
     name: "Káva & Láska",
     url: null,
     logo: "/logos/kava-a-laska.png",
-    logoBg: "bg-[#f5f0e8]",
-    logoWidth: 110,
-    logoHeight: 28,
-    status: "soon",
+    logoWidth: 120,
+    logoHeight: 32,
+    status: "soon" as const,
     tag: "Firemný web",
   },
 ];
 
+// Duplicate for seamless loop
+const loopedProjects = [...projects, ...projects];
+
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative py-24 lg:py-32 border-t border-foreground/10">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <section id="testimonials" className="relative py-24 lg:py-32 border-t border-foreground/10 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-14">
 
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Referencie
-          </span>
-          <div className="flex-1 h-px bg-foreground/10" />
-          <span className="font-mono text-xs text-muted-foreground">
-            {projects.filter(p => p.status === "live").length} nasadených · {projects.filter(p => p.status === "soon").length} pripravujeme
-          </span>
+        {/* Header — matches other sections */}
+        <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+          <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+          Referencie
+        </span>
+        <div>
+          <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+          <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+            Projekty, na ktorých{" "}
+            <span className="text-muted-foreground">pracujeme.</span>
+            <span className="cursor-blink ml-2">_</span>
+          </h2>
         </div>
+      </div>
 
-        {/* Project grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project) => (
+      {/* Scrolling logo strip */}
+      <div className="relative">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent" />
+
+        <div className="flex gap-16 animate-marquee whitespace-nowrap w-max">
+          {loopedProjects.map((project, i) => (
             <div
-              key={project.name}
-              className="group relative border border-border hover:border-zjav/40 transition-all duration-300 bg-secondary/30 hover:bg-secondary/60"
+              key={`${project.name}-${i}`}
+              className="inline-flex flex-col items-center gap-3 w-40 shrink-0"
             >
-              {/* Logo area */}
-              <div className={`flex items-center justify-center h-32 ${project.logoBg} relative overflow-hidden`}>
+              {/* Logo — grayscale, no background block */}
+              <div className="flex items-center justify-center h-12">
                 <Image
                   src={project.logo}
                   alt={project.name}
                   width={project.logoWidth}
                   height={project.logoHeight}
-                  className="object-contain max-h-12"
+                  className="object-contain max-h-10 grayscale brightness-150 opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                 />
               </div>
 
-              {/* Info bar */}
-              <div className="px-5 py-4 flex items-center justify-between gap-3">
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-xs text-muted-foreground">{project.tag}</span>
-                  <span className="font-display text-sm tracking-wide text-foreground">{project.name}</span>
-                </div>
+              {/* Type */}
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
+                {project.tag}
+              </span>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  {project.status === "live" ? (
-                    <a
-                      href={project.url!}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-xs text-zjav border border-zjav/30 hover:border-zjav/60 hover:bg-zjav/5 px-3 py-1.5 transition-all duration-200"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-                      Nasadené
-                      <ExternalLink className="w-3 h-3 ml-0.5" />
-                    </a>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
-                      Pripravujeme
-                    </span>
-                  )}
-                </div>
-              </div>
+              {/* Status */}
+              {project.status === "live" ? (
+                <a
+                  href={project.url!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-zjav hover:underline underline-offset-4 transition-all"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                  Nasadené
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground/50">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+                  Pripravujeme
+                </span>
+              )}
             </div>
           ))}
         </div>
