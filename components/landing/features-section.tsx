@@ -331,16 +331,14 @@ export function FeaturesSection() {
             <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
             Čo získate
           </span>
-          <h2
-            className={`text-4xl lg:text-6xl font-display uppercase tracking-tight transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <span className="font-mono text-zjav">_</span> Prototyp
-            <br />
-            <span className="text-muted-foreground">zadarmo.</span>
-            <span className="cursor-blink ml-2">_</span>
-          </h2>
+          <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+              Prototyp zadarmo.{" "}
+              <span className="text-muted-foreground">Nulové riziko.</span>
+              <span className="cursor-blink ml-2">_</span>
+            </h2>
+          </div>
         </div>
 
         {/* Features List */}

@@ -49,12 +49,13 @@ export function InfrastructureSection() {
               <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
               Výkon
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              <span className="font-mono text-zjav">_</span> Rýchly web
-              <br />
-              je základ.
-              <span className="cursor-blink ml-2">_</span>
-            </h2>
+            <div className="mb-8">
+              <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+              <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+                Rýchly web je základ.
+                <span className="cursor-blink ml-2">_</span>
+              </h2>
+            </div>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
               Weby staviam na Verceli a moderných technológiách — Next.js a Nuxt.
               Bleskové načítanie, spoľahlivá prevádzka a bezpečnosť už v základe.

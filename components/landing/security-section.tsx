@@ -58,12 +58,13 @@ export function SecuritySection() {
               <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
               Dôvera
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              <span className="font-mono text-zjav">_</span> Bez rizika.
-              <br />
-              Bez zálohy.
-              <span className="cursor-blink ml-2">_</span>
-            </h2>
+            <div className="mb-8">
+              <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+              <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+                Bez rizika. Bez zálohy.
+                <span className="cursor-blink ml-2">_</span>
+              </h2>
+            </div>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
               Nemusíte platiť za mačku vo vreci. Najskôr vám ukážem prototyp
               zadarmo — a vy sa rozhodnete, či do toho ideme spolu.

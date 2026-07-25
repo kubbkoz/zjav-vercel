@@ -92,16 +92,14 @@ export function HowItWorksSection() {
             <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
             Ako to funguje
           </span>
-          <h2
-            className={`text-4xl lg:text-6xl font-display uppercase tracking-tight transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <span className="font-mono text-zjav">_</span> Tri kroky,
-            <br />
-            <span className="text-muted-foreground">nulové riziko.</span>
-            <span className="cursor-blink ml-2">_</span>
-          </h2>
+          <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+              Tri kroky,{" "}
+              <span className="text-muted-foreground">nulové riziko.</span>
+              <span className="cursor-blink ml-2">_</span>
+            </h2>
+          </div>
         </div>
 
         {/* Main content */}

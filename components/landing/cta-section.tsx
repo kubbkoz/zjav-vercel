@@ -56,12 +56,13 @@ export function CtaSection() {
                   Prototyp do 24 hodín
                 </span>
 
-                <h2 className="text-4xl lg:text-7xl font-display uppercase tracking-tight mb-8 leading-[0.95]">
-                  <span className="font-mono text-zjav">_</span> Zviditeľnite
-                  <br />
-                  sa online.
-                  <span className="cursor-blink ml-2">_</span>
-                </h2>
+                <div className="mb-8">
+                  <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+                  <h2 className="text-4xl lg:text-7xl font-display uppercase tracking-tight leading-tight">
+                    Zviditeľnite sa online.
+                    <span className="cursor-blink ml-2">_</span>
+                  </h2>
+                </div>
 
                 <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
                   Chcete viac zákazníkov a modernú online prezentáciu? Napíšte mi

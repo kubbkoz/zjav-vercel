@@ -120,12 +120,14 @@ export function DevelopersSection() {
               <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
               Technológie
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              <span className="font-mono text-zjav">_</span> Solid stack.
-              <br />
-              <span className="text-muted-foreground">Žiadne skratky.</span>
-              <span className="cursor-blink ml-2">_</span>
-            </h2>
+            <div className="mb-8">
+              <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+              <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+                Solid stack.{" "}
+                <span className="text-muted-foreground">Žiadne skratky.</span>
+                <span className="cursor-blink ml-2">_</span>
+              </h2>
+            </div>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
               Nedostanete šablónu z internetu. Váš web staviam ručne na
               spoľahlivých technológiách, ktoré používajú tie najlepšie firmy.

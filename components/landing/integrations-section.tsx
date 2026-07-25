@@ -47,11 +47,12 @@ export function IntegrationsSection() {
             Technológie
             <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
           </span>
-          <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-6">
-            <span className="font-mono text-zjav">_</span> Stack,
-            <br />
-            ktorému môžete veriť.<span className="cursor-blink ml-1">_</span>
-          </h2>
+          <div className="mb-6">
+            <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+              Stack, ktorému môžete veriť.<span className="cursor-blink ml-1">_</span>
+            </h2>
+          </div>
           <p className="text-xl text-muted-foreground">
             Moderný a overený stack — Shopware 6, Nuxt, React, Next.js a Vercel. Vrátane importu a exportu vašich dát.
           </p>
