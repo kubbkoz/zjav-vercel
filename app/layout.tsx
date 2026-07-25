@@ -22,14 +22,107 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains'
 });
 
+const siteUrl = 'https://zjav.sk'
+const siteName = 'ZJAV_'
+const title = 'ZJAV_ — Prototyp webu ZADARMO do 24 hodín'
+const description = 'Chcete viac zákazníkov? Zviditeľníme vaše podnikanie. Nezáväzný náhľad webu zadarmo, hotový web do 7 dní. Rýchle a spoľahlivé weby na mieru.'
+
 export const metadata: Metadata = {
-  title: 'ZJAV_ — Prototyp webu ZADARMO do 24 hodín',
-  description: 'Chcete viac zákazníkov? Zviditeľníme vaše podnikanie. Nezáväzný náhľad webu zadarmo, hotový web do 7 dní. Rýchle a spoľahlivé weby na mieru.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: `%s | ${siteName}`,
+  },
+  description,
+  keywords: [
+    'tvorba webstránok',
+    'webstránky na mieru',
+    'tvorba e-shopu',
+    'Shopware 6',
+    'Next.js web',
+    'firemný web Slovensko',
+    'web zadarmo',
+    'web do 7 dní',
+  ],
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  applicationName: siteName,
+  category: 'technology',
   generator: 'v0.app',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'sk_SK',
+    url: siteUrl,
+    siteName,
+    title,
+    description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-icon.png',
+  },
+  manifest: '/manifest.webmanifest',
 }
 
 export const viewport = {
   themeColor: '#06080D',
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteUrl}/#organization`,
+      name: siteName,
+      url: siteUrl,
+      logo: `${siteUrl}/icon.svg`,
+      image: `${siteUrl}/opengraph-image`,
+      description,
+      email: 'ahoj@zjav.sk',
+      areaServed: {
+        '@type': 'Country',
+        name: 'Slovensko',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'SK',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      description,
+      publisher: { '@id': `${siteUrl}/#organization` },
+      inLanguage: 'sk-SK',
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -39,6 +132,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk" className="bg-background">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} ${oxanium.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />
