@@ -61,7 +61,9 @@ export function SecuritySection() {
             <div className="mb-8">
               <span className="block font-mono text-zjav text-2xl mb-1">_</span>
               <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
-                Bez rizika. Bez zálohy.
+                Bez rizika.
+                <br />
+                <span className="text-muted-foreground">Bez zálohy.</span>
                 <span className="cursor-blink ml-2">_</span>
               </h2>
             </div>
