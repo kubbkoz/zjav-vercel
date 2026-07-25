@@ -50,7 +50,9 @@ export function IntegrationsSection() {
           <div className="mb-6">
             <span className="block font-mono text-zjav text-2xl mb-1">_</span>
             <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
-              Stack, ktorému môžete veriť.<span className="cursor-blink ml-1">_</span>
+              Stack, ktorému
+              <br />
+              <span className="text-muted-foreground">môžete veriť.</span><span className="cursor-blink ml-1">_</span>
             </h2>
           </div>
           <p className="text-xl text-muted-foreground">
