@@ -6,13 +6,17 @@ import { useModal } from "./modal-provider";
 
 export function ScrollToTop() {
   const { openModal } = useModal();
+  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setVisible(window.scrollY > 400);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (!mounted) return null;
 
   const scrollUp = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -30,7 +34,7 @@ export function ScrollToTop() {
         <ArrowRight className="w-4 h-4" />
       </button>
 
-      {/* Scroll to top — desktop right, mobile right */}
+      {/* Scroll to top */}
       <button
         onClick={scrollUp}
         aria-label="Scroll to top"
