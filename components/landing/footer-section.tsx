@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { AnimatedWave } from "./animated-wave";
+import { useModal } from "./modal-provider";
 
 const footerLinks = {
   "Služby": [
@@ -33,6 +34,8 @@ const socialLinks = [
 ];
 
 export function FooterSection() {
+  const { openCookieSettings } = useModal();
+
   return (
     <footer className="relative border-t border-foreground/10">
       {/* Animated wave background */}
@@ -104,7 +107,13 @@ export function FooterSection() {
             © 2026 ZJAV_ · zjav.sk · IČO: 50532596 · Všetky práva vyhradené.
           </p>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <button
+              onClick={openCookieSettings}
+              className="hover:text-foreground transition-colors font-mono text-xs"
+            >
+              Nastavenia cookies
+            </button>
             <span className="flex items-center gap-2 font-mono">
               <span className="w-2 h-2 rounded-full bg-signal animate-pulse" />
               Prijímam nové projekty
