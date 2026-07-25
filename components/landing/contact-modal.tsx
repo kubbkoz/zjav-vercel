@@ -14,7 +14,7 @@ type Status = "idle" | "sending" | "success" | "error";
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [formLoadedAt] = useState(() => Date.now());
+  const formLoadedAtRef = useRef<number>(0);
 
   const [form, setForm] = useState({
     name: "",
@@ -43,12 +43,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     };
   }, [isOpen, onClose]);
 
-  // Reset on open
+  // Reset on open + record form load time client-side
   useEffect(() => {
     if (isOpen) {
       setStatus("idle");
       setErrorMsg("");
       setForm({ name: "", email: "", phone: "", message: "", honeypot: "" });
+      formLoadedAtRef.current = Date.now();
     }
   }, [isOpen]);
 
@@ -75,7 +76,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, formLoadedAt }),
+        body: JSON.stringify({ ...form, formLoadedAt: formLoadedAtRef.current }),
       });
 
       const data = await res.json();
