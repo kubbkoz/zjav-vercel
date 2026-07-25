@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Features", href: "#features" },
-  { name: "How it works", href: "#how-it-works" },
-  { name: "Developers", href: "#developers" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Ako to funguje", href: "#how-it-works" },
+  { name: "Čo získate", href: "#features" },
+  { name: "Technológie", href: "#developers" },
+  { name: "Cena", href: "#pricing" },
 ];
 
 export function Navigation() {
@@ -44,9 +44,11 @@ export function Navigation() {
           }`}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <span className={`font-display tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>Optimus</span>
-            <span className={`text-muted-foreground font-mono transition-all duration-500 ${isScrolled ? "text-[10px] mt-0.5" : "text-xs mt-1"}`}>TM</span>
+          <a href="#" className="flex items-center gap-3 group">
+            <span className={`font-display uppercase tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>
+              ZJAV<span className="text-zjav text-glow-zjav">_</span>
+            </span>
+            <span className={`text-muted-foreground font-mono transition-all duration-500 ${isScrolled ? "text-[9px] mt-0.5" : "text-[10px] mt-1"}`}>zjav.sk</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -65,14 +67,14 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
-              Sign in
+            <a href="#pricing" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+              Cenník
             </a>
             <Button
               size="sm"
-              className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
+              className={`bg-zjav hover:bg-zjav-dark text-background rounded-full glow-zjav font-medium transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
-              Start creating
+              Náhľad zadarmo
             </Button>
           </div>
 
@@ -131,16 +133,16 @@ export function Navigation() {
           >
             <Button 
               variant="outline" 
-              className="flex-1 rounded-full h-14 text-base"
+              className="flex-1 rounded-full h-14 text-base border-foreground/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign in
+              Cenník
             </Button>
             <Button 
-              className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
+              className="flex-1 bg-zjav hover:bg-zjav-dark text-background rounded-full h-14 text-base glow-zjav"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Start creating
+              Náhľad zadarmo
             </Button>
           </div>
         </div>

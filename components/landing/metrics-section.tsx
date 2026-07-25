@@ -38,7 +38,7 @@ function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffi
   }, [end, hasAnimated]);
 
   return (
-    <div ref={ref} className="text-6xl lg:text-8xl font-display tracking-tight">
+    <div ref={ref} className="text-6xl lg:text-8xl font-display text-zjav tracking-tight">
       {prefix}{count.toLocaleString()}{suffix}
     </div>
   );
@@ -46,28 +46,28 @@ function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffi
 
 const metrics = [
   { 
-    value: 2847392, 
-    suffix: "", 
+    value: 24, 
+    suffix: " h", 
     prefix: "",
-    label: "API requests today",
+    label: "Prototyp webu zadarmo",
   },
   { 
-    value: 99, 
-    suffix: ".99%", 
+    value: 7, 
+    suffix: " dní", 
     prefix: "",
-    label: "Uptime this quarter",
+    label: "Hotový web na kľúč",
   },
   { 
-    value: 23, 
-    suffix: "ms", 
+    value: 100, 
+    suffix: " %", 
     prefix: "",
-    label: "Average response time",
+    label: "Dizajn na mieru",
   },
   { 
-    value: 184, 
-    suffix: "", 
+    value: 0, 
+    suffix: " €", 
     prefix: "",
-    label: "Countries served",
+    label: "Za nezáväzný náhľad",
   },
 ];
 
@@ -100,18 +100,18 @@ export function MetricsSection() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-24">
           <div>
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-              <span className="w-8 h-px bg-foreground/30" />
-              Live metrics
+            <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+              <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+              V číslach
             </span>
             <h2
-              className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
+              className={`text-4xl lg:text-6xl font-display uppercase tracking-tight transition-all duration-700 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              Performance you
+              Podmienky, ktoré
               <br />
-              can measure.
+              dávajú zmysel.
             </h2>
           </div>
           <div className="flex items-center gap-4 font-mono text-sm text-muted-foreground">

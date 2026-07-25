@@ -3,12 +3,12 @@
 import { useEffect, useState, useRef } from "react";
 
 const locations = [
-  { city: "San Francisco", region: "US West", latency: "12ms" },
-  { city: "New York", region: "US East", latency: "18ms" },
-  { city: "London", region: "Europe", latency: "24ms" },
-  { city: "Tokyo", region: "Asia Pacific", latency: "32ms" },
-  { city: "Sydney", region: "Oceania", latency: "45ms" },
-  { city: "Sao Paulo", region: "South America", latency: "38ms" },
+  { city: "Responzívny dizajn", region: "Perfektné na mobile aj desktope", latency: "v cene" },
+  { city: "SSL certifikát", region: "Zabezpečené pripojenie HTTPS", latency: "v cene" },
+  { city: "SEO základ", region: "Aby vás našli vo vyhľadávaní", latency: "v cene" },
+  { city: "Kontaktné formuláre", region: "Dopyty priamo do e-mailu", latency: "v cene" },
+  { city: "Import / Export dát", region: "Napojenie na vaše systémy", latency: "v cene" },
+  { city: "Shopware 6 backend", region: "E-shop pripravený na rast", latency: "voliteľné" },
 ];
 
 export function InfrastructureSection() {
@@ -45,33 +45,33 @@ export function InfrastructureSection() {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
             }`}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-              <span className="w-8 h-px bg-foreground/30" />
-              Infrastructure
+            <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+              <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+              Výkon
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Global by
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
+              Rýchly web
               <br />
-              default.
+              je samozrejmosť.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Deploy once, run everywhere. Our edge network spans 17 data centers 
-              across 6 continents, delivering sub-50ms latency to 99% of the world.
+              Weby staviam na Verceli a moderných technológiách — Next.js a Nuxt.
+              Bleskové načítanie, spoľahlivá prevádzka a bezpečnosť už v základe.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8">
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">17</div>
-                <div className="text-sm text-muted-foreground">Data centers</div>
+                <div className="text-4xl lg:text-5xl font-display text-zjav mb-2">7 dní</div>
+                <div className="text-sm text-muted-foreground">Dodanie na kľúč</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">99.99%</div>
-                <div className="text-sm text-muted-foreground">Uptime SLA</div>
+                <div className="text-4xl lg:text-5xl font-display text-zjav mb-2">99.9%</div>
+                <div className="text-sm text-muted-foreground">Dostupnosť</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">&lt;50ms</div>
-                <div className="text-sm text-muted-foreground">Global latency</div>
+                <div className="text-4xl lg:text-5xl font-display text-zjav mb-2">&lt;1s</div>
+                <div className="text-sm text-muted-foreground">Načítanie</div>
               </div>
             </div>
           </div>
@@ -85,10 +85,10 @@ export function InfrastructureSection() {
             <div className="border border-foreground/10">
               {/* Header */}
               <div className="px-6 py-4 border-b border-foreground/10 flex items-center justify-between">
-                <span className="text-sm font-mono text-muted-foreground">Edge Network</span>
-                <span className="flex items-center gap-2 text-xs font-mono text-green-600">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  All operational
+                <span className="text-sm font-mono uppercase tracking-wide text-muted-foreground">V cene každého webu</span>
+                <span className="flex items-center gap-2 text-xs font-mono text-signal">
+                  <span className="w-2 h-2 rounded-full bg-signal animate-pulse" />
+                  Kompletne
                 </span>
               </div>
 
@@ -104,7 +104,7 @@ export function InfrastructureSection() {
                     <div className="flex items-center gap-4">
                       <span 
                         className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                          activeLocation === index ? "bg-foreground" : "bg-foreground/20"
+                          activeLocation === index ? "bg-zjav" : "bg-foreground/20"
                         }`}
                       />
                       <div>

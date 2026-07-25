@@ -54,7 +54,7 @@ export function AnimatedWave() {
           const charIndex = Math.floor(normalized * (chars.length - 1));
           const alpha = 0.15 + normalized * 0.5;
 
-          ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
+          ctx.fillStyle = `rgba(0, 207, 255, ${alpha})`;
           ctx.fillText(chars[charIndex], px, py);
         }
       }

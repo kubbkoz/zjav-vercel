@@ -5,52 +5,51 @@ import { Copy, Check } from "lucide-react";
 
 const codeExamples = [
   {
-    label: "Install",
-    code: `npm install @optimus/sdk
-
-# or
-yarn add @optimus/sdk
-pnpm add @optimus/sdk`,
+    label: "Frontend",
+    code: `// Next.js + React
+export default function Stranka() {
+  return (
+    <main className="hero">
+      <h1>Váš nový web</h1>
+    </main>
+  )
+}`,
   },
   {
-    label: "Initialize",
-    code: `import { Optimus } from '@optimus/sdk'
+    label: "Backend",
+    code: `// Shopware 6 — produkty
+const produkty = await shopware
+  .api('/store-api/product')
+  .get({ limit: 24 })
 
-const optimus = new Optimus({
-  apiKey: process.env.OPTIMUS_KEY
-})`,
+// pripravené na e-shop`,
   },
   {
-    label: "Deploy",
-    code: `const app = await optimus.deploy({
-  name: 'my-app',
-  region: 'auto',
-  scaling: {
-    min: 1,
-    max: 100
-  }
-})
+    label: "Nasadenie",
+    code: `// Vercel — jedným krokom
+$ vercel deploy --prod
 
-console.log('Live at:', app.url)`,
+✔ Build hotový
+✔ Web je online za pár sekúnd`,
   },
 ];
 
 const features = [
   { 
-    title: "TypeScript native", 
-    description: "Full type safety with auto-generated types."
+    title: "Moderný stack", 
+    description: "Next.js, Nuxt a React pre rýchle weby."
   },
   { 
-    title: "Zero config", 
-    description: "Sensible defaults that just work."
+    title: "Shopware 6", 
+    description: "Robustný backend pre plnohodnotné e-shopy."
   },
   { 
-    title: "Edge-ready", 
-    description: "Runs anywhere: Node, Deno, Bun, browsers."
+    title: "Import / Export", 
+    description: "Prenesiem vaše dáta bez straty a chaosu."
   },
   { 
-    title: "12KB gzipped", 
-    description: "Lightweight with zero dependencies."
+    title: "Vercel hosting", 
+    description: "Bleskové načítanie a 99.9% dostupnosť."
   },
 ];
 
@@ -117,18 +116,18 @@ export function DevelopersSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-              <span className="w-8 h-px bg-foreground/30" />
-              For developers
+            <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+              <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+              Technológie
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Built by devs.
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
+              Pod kapotou.
               <br />
-              <span className="text-muted-foreground">For devs.</span>
+              <span className="text-muted-foreground">Kvalitne.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              A thoughtfully designed SDK that gets out of your way. 
-              Ship faster with intuitive APIs and exceptional documentation.
+              Nedostanete šablónu z internetu. Váš web staviam ručne na
+              spoľahlivých technológiách, ktoré používajú tie najlepšie firmy.
             </p>
             
             {/* Features */}
@@ -219,12 +218,12 @@ export function DevelopersSection() {
             
             {/* Links */}
             <div className="mt-6 flex items-center gap-6 text-sm">
-              <a href="#" className="text-foreground hover:underline underline-offset-4">
-                Read the docs
+              <a href="#pricing" className="text-zjav hover:underline underline-offset-4">
+                Pozrieť cenník
               </a>
               <span className="text-foreground/20">|</span>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
-                View on GitHub
+              <a href="#contact" className="text-muted-foreground hover:text-foreground">
+                Nezáväzný dopyt
               </a>
             </div>
           </div>

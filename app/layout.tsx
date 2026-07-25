@@ -1,18 +1,18 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const instrumentSans = Instrument_Sans({ 
+const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-instrument'
+  variable: '--font-inter'
 });
 
-const instrumentSerif = Instrument_Serif({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  weight: "400",
-  variable: '--font-instrument-serif'
+  weight: ["500", "600", "700"],
+  variable: '--font-space-grotesk'
 });
 
 const jetbrainsMono = JetBrains_Mono({ 
@@ -21,9 +21,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Optimus - Platform to Create',
-  description: 'The creative platform for teams who ship. Build, deploy, and scale with unprecedented velocity.',
+  title: 'ZJAV_ — Prototyp webu ZADARMO do 24 hodín',
+  description: 'Chcete viac zákazníkov? Zviditeľníme vaše podnikanie. Nezáväzný náhľad webu zadarmo, hotový web do 7 dní. Rýchle a spoľahlivé weby na mieru.',
   generator: 'v0.app',
+}
+
+export const viewport = {
+  themeColor: '#06080D',
 }
 
 export default function RootLayout({
@@ -32,8 +36,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+    <html lang="sk" className="bg-background">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

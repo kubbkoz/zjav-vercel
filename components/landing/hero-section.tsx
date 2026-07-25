@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSphere } from "./animated-sphere";
 
-const words = ["create", "build", "scale", "ship"];
+const words = ["zviditeľní", "predáva", "presvedčí", "posunie"];
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,6 +29,9 @@ export function HeroSection() {
         <AnimatedSphere />
       </div>
       
+      {/* Scanline overlay */}
+      <div className="absolute inset-0 bg-scanline pointer-events-none" />
+
       {/* Subtle grid lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
         {[...Array(8)].map((_, i) => (
@@ -62,26 +65,26 @@ export function HeroSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground">
-            <span className="w-8 h-px bg-foreground/30" />
-            The platform for modern teams
+          <span className="inline-flex items-center gap-3 rounded-full border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav">
+            <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+            Prototyp ZADARMO do 24 hodín
           </span>
         </div>
         
         {/* Main headline */}
         <div className="mb-12">
           <h1 
-            className={`text-[clamp(3rem,12vw,10rem)] font-display leading-[0.9] tracking-tight transition-all duration-1000 ${
+            className={`text-[clamp(3rem,12vw,10rem)] font-display uppercase leading-[0.9] tracking-tight transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block">The platform</span>
+            <span className="block">Web, ktorý</span>
             <span className="block">
-              to{" "}
+              vás{" "}
               <span className="relative inline-block">
                 <span 
                   key={wordIndex}
-                  className="inline-flex"
+                  className="inline-flex text-zjav text-glow-zjav"
                 >
                   {words[wordIndex].split("").map((char, i) => (
                     <span
@@ -95,7 +98,7 @@ export function HeroSection() {
                     </span>
                   ))}
                 </span>
-                <span className="absolute -bottom-2 left-0 right-0 h-3 bg-foreground/10" />
+                <span className="absolute -bottom-2 left-0 right-0 h-3 bg-zjav/20" />
               </span>
             </span>
           </h1>
@@ -108,8 +111,9 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your toolkit to stop configuring and start innovating. 
-            Securely build, deploy, and scale the best experiences.
+            Chcete viac zákazníkov a modernú online prezentáciu? Dnes sa bez webu
+            nepohnete. Pošlem vám nezáväzný náhľad webu <span className="text-foreground">zadarmo</span> —
+            až potom sa rozhodnete, či do toho ideme.
           </p>
           
           {/* CTAs */}
@@ -120,9 +124,9 @@ export function HeroSection() {
           >
             <Button 
               size="lg" 
-              className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
+              className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-full glow-zjav font-medium group"
             >
-              Start free trial
+              Chcem náhľad zadarmo
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button 
@@ -130,7 +134,7 @@ export function HeroSection() {
               variant="outline" 
               className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
             >
-              Watch demo
+              Ako to funguje
             </Button>
           </div>
         </div>
@@ -147,13 +151,13 @@ export function HeroSection() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-16">
               {[
-                { value: "20 days", label: "saved on builds", company: "NETFLIX" },
-                { value: "98%", label: "faster deployment", company: "STRIPE" },
-                { value: "300%", label: "throughput increase", company: "LINEAR" },
-                { value: "6x", label: "faster to ship", company: "NOTION" },
+                { value: "24 h", label: "prototyp zadarmo", company: "BEZ RIZIKA" },
+                { value: "7 dní", label: "hotový web na kľúč", company: "NA MIERU" },
+                { value: "0 €", label: "za nezáväzný náhľad", company: "NAJSKÔR VIDÍTE" },
+                { value: "100%", label: "vlastný dizajn", company: "SHOPWARE · NUXT" },
               ].map((stat) => (
                 <div key={`${stat.company}-${i}`} className="flex items-baseline gap-4">
-                  <span className="text-4xl lg:text-5xl font-display">{stat.value}</span>
+                  <span className="text-4xl lg:text-5xl font-display text-zjav">{stat.value}</span>
                   <span className="text-sm text-muted-foreground">
                     {stat.label}
                     <span className="block font-mono text-xs mt-1">{stat.company}</span>

@@ -6,27 +6,27 @@ import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 const securityFeatures = [
   {
     icon: Shield,
-    title: "SOC 2 Type II",
-    description: "Independently audited security controls with continuous monitoring.",
+    title: "Nulové riziko",
+    description: "Najskôr uvidíte prototyp zadarmo. Rozhodnete sa až potom, čo si pozriete výsledok.",
   },
   {
     icon: Lock,
-    title: "End-to-end encryption",
-    description: "AES-256 encryption for data at rest and TLS 1.3 in transit.",
+    title: "SSL a bezpečnosť",
+    description: "HTTPS a moderné zabezpečenie sú súčasťou každého webu, ktorý postavím.",
   },
   {
     icon: Eye,
-    title: "Zero-trust architecture",
-    description: "Every request is authenticated and authorized. No exceptions.",
+    title: "Transparentná cena",
+    description: "Jasná cena dohodnutá vopred. Žiadne skryté poplatky ani nepríjemné prekvapenia.",
   },
   {
     icon: FileCheck,
-    title: "GDPR & HIPAA",
-    description: "Full compliance with data protection and healthcare regulations.",
+    title: "GDPR v súlade",
+    description: "Weby spĺňajú pravidlá ochrany osobných údajov platné na Slovensku a v EÚ.",
   },
 ];
 
-const certifications = ["SOC 2", "ISO 27001", "HIPAA", "GDPR", "CCPA"];
+const certifications = ["Bez zálohy", "SSL", "GDPR", "Záruka", "Podpora"];
 
 export function SecuritySection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,18 +54,18 @@ export function SecuritySection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-              <span className="w-8 h-px bg-foreground/30" />
-              Security
+            <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+              <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+              Dôvera
             </span>
-            <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Trust is
+            <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
+              Bez rizika
               <br />
-              non-negotiable.
+              pre vás.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Enterprise-grade security isn&apos;t optional. It&apos;s built into every layer 
-              of our platform, from infrastructure to application.
+              Nemusíte platiť za mačku vo vreci. Najskôr vám ukážem prototyp
+              zadarmo — a vy sa rozhodnete, či do toho ideme spolu.
             </p>
 
             {/* Certifications */}

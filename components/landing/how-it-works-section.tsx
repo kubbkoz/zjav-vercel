@@ -5,38 +5,37 @@ import { useEffect, useRef, useState } from "react";
 const steps = [
   {
     number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
-
-optimus.connect({
-  source: 'your-database',
-  sync: true
-})`,
+    title: "Napíšte mi, čo potrebujete",
+    description: "Nezáväzne mi opíšte svoje podnikanie a predstavu o webe. Stačí pár viet — o zvyšok sa postarám.",
+    code: `// ZJAV_ — váš projekt
+const projekt = {
+  typ: 'firemná prezentácia',
+  cieľ: 'viac zákazníkov',
+  zaviazok: false
+}`,
   },
   {
     number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
+    title: "Do 24 h dostanete prototyp",
+    description: "Pošlem vám živý náhľad vášho nového webu — zadarmo. Pozriete si dizajn aj obsah, bez akéhokoľvek záväzku.",
+    code: `// Prototyp — Nuxt + Shopware 6
+zjav.prototyp({
+  nahlad: 'zadarmo',
+  dodanie: '24 hodín',
+  rozhodnutie: 'na vás'
 })`,
   },
   {
     number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
+    title: "Spustíme web do 7 dní",
+    description: "Ak sa vám náhľad páči, dokončím web na kľúč a nasadím ho online. Rýchlo, spoľahlivo a na mieru.",
+    code: `zjav.deploy({
+  stack: ['Next.js', 'Nuxt', 'Shopware 6'],
+  hosting: 'Vercel',
+  dodanie: '7 dní'
 })
 
-// Deployed to 12 regions`,
+// Web je online ✔`,
   },
 ];
 
@@ -86,18 +85,18 @@ export function HowItWorksSection() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-16 lg:mb-24">
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
+          <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            Ako to funguje
           </span>
           <h2
-            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
+            className={`text-4xl lg:text-6xl font-display uppercase tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Three steps.
+            Tri kroky.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">Web bez rizika.</span>
           </h2>
         </div>
 
@@ -151,7 +150,7 @@ export function HowItWorksSection() {
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                 </div>
-                <span className="text-xs font-mono text-background/40">workflow.ts</span>
+                <span className="text-xs font-mono text-background/40">zjav.config.ts</span>
               </div>
 
               {/* Code content */}
@@ -187,7 +186,7 @@ export function HowItWorksSection() {
               {/* Status */}
               <div className="px-6 py-4 border-t border-background/10 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-mono text-background/40">Ready</span>
+                <span className="text-xs font-mono text-background/40">Pripravené</span>
               </div>
             </div>
           </div>

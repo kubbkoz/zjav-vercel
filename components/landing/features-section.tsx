@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 const features = [
   {
     number: "01",
-    title: "Instant Deployment",
-    description: "Push to production in seconds. Our edge network ensures your applications load instantly, anywhere in the world.",
+    title: "Náhľad zadarmo",
+    description: "Najskôr uvidíte, potom sa rozhodnete. Do 24 hodín vám pošlem nezáväzný prototyp vášho nového webu — bez záväzkov a bez rizika.",
     visual: "deploy",
   },
   {
     number: "02",
-    title: "AI-Native Workflows",
-    description: "Build intelligent applications with built-in AI capabilities. From inference to training, everything scales automatically.",
+    title: "Hotový web do 7 dní",
+    description: "Kým konkurencia rieši cenové ponuky, vy už zbierate zákazníkov. Rýchle a spoľahlivé weby dodané na kľúč.",
     visual: "ai",
   },
   {
     number: "03",
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly. Live preview, instant feedback, and version control that actually makes sense.",
+    title: "Weby na mieru",
+    description: "Žiadne generické šablóny. Dizajn a obsah presne pre vaše podnikanie — moderné, prehľadné a pripravené predávať.",
     visual: "collab",
   },
   {
     number: "04",
-    title: "Enterprise Security",
-    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data stays yours.",
+    title: "Spoľahlivé technológie",
+    description: "Postavené na Shopware 6, Nuxt, React, Next.js a nasadené na Vercel. Vrátane importu a exportu dát z vašich systémov.",
     visual: "security",
   },
 ];
@@ -292,7 +292,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
           
           {/* Visual */}
           <div className="flex justify-center lg:justify-end">
-            <div className="w-48 h-40 text-foreground">
+            <div className="w-48 h-40 text-zjav">
               <AnimatedVisual type={feature.visual} />
             </div>
           </div>
@@ -327,18 +327,18 @@ export function FeaturesSection() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-16 lg:mb-24">
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-            <span className="w-8 h-px bg-foreground/30" />
-            Capabilities
+          <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+            <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+            Čo získate
           </span>
           <h2
-            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
+            className={`text-4xl lg:text-6xl font-display uppercase tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everything you need.
+            Prototyp zadarmo.
             <br />
-            <span className="text-muted-foreground">Nothing you don&apos;t.</span>
+            <span className="text-muted-foreground">Nulové riziko.</span>
           </h2>
         </div>
 

@@ -3,18 +3,18 @@
 import { useEffect, useState, useRef } from "react";
 
 const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+  { name: "Shopware 6", category: "E-commerce backend" },
+  { name: "Nuxt", category: "Frontend framework" },
+  { name: "React", category: "UI knižnica" },
+  { name: "Next.js", category: "Frontend framework" },
+  { name: "Vercel", category: "Hosting a nasadenie" },
+  { name: "TypeScript", category: "Typová bezpečnosť" },
+  { name: "Tailwind CSS", category: "Dizajn systém" },
+  { name: "Import / Export dát", category: "Migrácia obsahu" },
+  { name: "GitHub", category: "Verziovanie" },
+  { name: "Figma", category: "Dizajn" },
+  { name: "Node.js", category: "Runtime" },
+  { name: "Stripe", category: "Platby" },
 ];
 
 export function IntegrationsSection() {
@@ -42,18 +42,18 @@ export function IntegrationsSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-            <span className="w-8 h-px bg-foreground/30" />
-            Integrations
-            <span className="w-8 h-px bg-foreground/30" />
+          <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+            <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+            Technológie
+            <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
           </span>
-          <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+          <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-6">
+            Postavené na tom
             <br />
-            you already use.
+            najspoľahlivejšom.
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            Moderný a overený stack — Shopware 6, Nuxt, React, Next.js a Vercel. Vrátane importu a exportu vašich dát.
           </p>
         </div>
 
