@@ -103,15 +103,24 @@ const jsonLd = {
       logo: `${siteUrl}/icon.svg`,
       image: `${siteUrl}/opengraph-image`,
       description,
-      email: 'ahoj@zjav.sk',
+      email: 'hello@zjav.sk',
+      telephone: '+421918564238',
       areaServed: {
         '@type': 'Country',
         name: 'Slovensko',
       },
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Suchá Hora 143',
+        addressLocality: 'Suchá Hora',
         addressCountry: 'SK',
       },
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'IČO',
+        value: '50532596',
+      },
+      sameAs: ['https://github.com/kubbkoz'],
     },
     {
       '@type': 'WebSite',

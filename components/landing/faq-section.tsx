@@ -57,7 +57,7 @@ const faqs = [
   {
     question: "Ako vás môžem kontaktovať?",
     answer:
-      'Najrýchlejšie cez formulár nižšie ("Nezáväzný dopyt") alebo priamo na ahoj@zjav.sk — odpoviem vám s návrhom ďalšieho postupu.',
+      'Najrýchlejšie cez formulár nižšie ("Nezáväzný dopyt") alebo priamo na hello@zjav.sk — odpoviem vám s návrhom ďalšieho postupu.',
   },
 ];
 

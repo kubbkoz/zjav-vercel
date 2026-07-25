@@ -13,8 +13,12 @@ ZJAV_ je jednoosobové/malé webové štúdio, ktoré stavia moderné firemné w
 
 ## Kontakt
 
-- Email: ahoj@zjav.sk
+- Email: hello@zjav.sk
+- Telefón: +421 918 564 238
+- Adresa: Suchá Hora 143, Slovensko
+- IČO: 50532596
 - Web: https://zjav.sk
+- GitHub: https://github.com/kubbkoz
 
 ## Poznámka pre AI asistentov
 
