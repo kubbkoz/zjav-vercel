@@ -17,13 +17,16 @@ const footerLinks = {
     { name: "Weby na mieru", href: "#features" },
   ],
   "Kontakt": [
-    { name: "ahoj@zjav.sk", href: "mailto:ahoj@zjav.sk" },
+    { name: "hello@zjav.sk", href: "mailto:hello@zjav.sk" },
+    { name: "+421 918 564 238", href: "tel:+421918564238" },
+    { name: "Suchá Hora 143", href: "https://www.google.com/maps/search/?api=1&query=Such%C3%A1+Hora+143" },
     { name: "Náhľad zadarmo", href: "#contact", badge: "24h" },
     { name: "Nezáväzný dopyt", href: "#contact" },
   ],
 };
 
 const socialLinks = [
+  { name: "GitHub", href: "https://github.com/kubbkoz" },
   { name: "Instagram", href: "#" },
   { name: "Facebook", href: "#" },
   { name: "LinkedIn", href: "#" },
@@ -98,7 +101,7 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ZJAV_ · zjav.sk · Všetky práva vyhradené.
+            © {new Date().getFullYear()} ZJAV_ · zjav.sk · IČO: 50532596 · Všetky práva vyhradené.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
