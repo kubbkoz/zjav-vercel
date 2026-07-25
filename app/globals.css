@@ -47,6 +47,7 @@
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
   --font-display: var(--font-oxanium), 'Oxanium', system-ui, sans-serif;
+  --font-oxanium: var(--font-oxanium), 'Oxanium', system-ui, sans-serif;
   --color-zjav: var(--zjav);
   --color-zjav-dark: var(--zjav-dark);
   --color-signal: var(--signal);
@@ -102,7 +103,7 @@
 
 @layer utilities {
   .font-display {
-    font-family: var(--font-display);
+    font-family: var(--font-oxanium), 'Oxanium', system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
