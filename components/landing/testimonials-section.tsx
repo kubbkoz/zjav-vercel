@@ -1,163 +1,143 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
 
-const testimonials = [
+type Status = "live" | "soon";
+
+const projects: {
+  name: string;
+  url: string | null;
+  logo: string;
+  logoBg: string;
+  logoWidth: number;
+  logoHeight: number;
+  status: Status;
+  tag: string;
+}[] = [
   {
-    quote: "Prototyp som mal v e-maile na druhý deň. Nemusel som nič riešiť a web bol presne podľa mojich predstáv.",
-    author: "Martin Kováč",
-    role: "Majiteľ",
-    company: "Stolárstvo Kováč",
-    metric: "Web do 5 dní",
+    name: "robotlm.sk",
+    url: "https://robotlm.sk",
+    logo: "/logos/robotlm.svg",
+    logoBg: "bg-[#0d1b2a]",
+    logoWidth: 120,
+    logoHeight: 18,
+    status: "live",
+    tag: "Firemný web",
   },
   {
-    quote: "Konečne firemný web, na ktorý som hrdá. Prvé dopyty od zákazníkov prišli hneď v prvom týždni.",
-    author: "Jana Horváthová",
-    role: "Konateľka",
-    company: "Kvety Horváth",
-    metric: "+40 % dopytov",
+    name: "slickly.sk",
+    url: "https://slickly.sk",
+    logo: "/logos/slickly.png",
+    logoBg: "bg-black",
+    logoWidth: 100,
+    logoHeight: 28,
+    status: "live",
+    tag: "Firemný web",
   },
   {
-    quote: "Oceňujem, že som najskôr videl náhľad zadarmo. Nulové riziko a žiadne skryté poplatky.",
-    author: "Peter Novák",
-    role: "Živnostník",
-    company: "Elektro Novák",
-    metric: "0 € vopred",
+    name: "mtsport",
+    url: null,
+    logo: "/logos/mtsport.png",
+    logoBg: "bg-[#111]",
+    logoWidth: 110,
+    logoHeight: 28,
+    status: "soon",
+    tag: "E-shop",
   },
   {
-    quote: "Rýchla komunikácia a moderný e-shop na Shopware. Predaje nám odvtedy stabilne rastú.",
-    author: "Lucia Balážová",
-    role: "Majiteľka",
-    company: "Bio Obchodík",
-    metric: "Shopware 6 e-shop",
+    name: "travel.zjav.sk",
+    url: null,
+    logo: "/logos/travelhub.png",
+    logoBg: "bg-[#132240]",
+    logoWidth: 120,
+    logoHeight: 32,
+    status: "soon",
+    tag: "Firemný web",
+  },
+  {
+    name: "homx.zjav.sk",
+    url: null,
+    logo: "/logos/homx.png",
+    logoBg: "bg-white",
+    logoWidth: 90,
+    logoHeight: 28,
+    status: "soon",
+    tag: "Startup",
+  },
+  {
+    name: "Káva & Láska",
+    url: null,
+    logo: "/logos/kava-a-laska.png",
+    logoBg: "bg-[#f5f0e8]",
+    logoWidth: 110,
+    logoHeight: 28,
+    status: "soon",
+    tag: "Firemný web",
   },
 ];
 
 export function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % testimonials.length);
-        setIsAnimating(false);
-      }, 300);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const activeTestimonial = testimonials[activeIndex];
-
   return (
-    <section id="testimonials" className="relative py-32 lg:py-40 border-t border-foreground/10 lg:pb-14">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section Label */}
+    <section id="testimonials" className="relative py-24 lg:py-32 border-t border-foreground/10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+        {/* Header */}
         <div className="flex items-center gap-4 mb-16">
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
             Referencie
           </span>
           <div className="flex-1 h-px bg-foreground/10" />
           <span className="font-mono text-xs text-muted-foreground">
-            {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+            {projects.filter(p => p.status === "live").length} nasadených · {projects.filter(p => p.status === "soon").length} pripravujeme
           </span>
         </div>
 
-        {/* Main Quote */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-8">
-            <blockquote
-              className={`transition-all duration-300 ${
-                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-            >
-              <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
-                "{activeTestimonial.quote}"
-              </p>
-            </blockquote>
-
-            {/* Author */}
+        {/* Project grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((project) => (
             <div
-              className={`mt-12 flex items-center gap-6 transition-all duration-300 delay-100 ${
-                isAnimating ? "opacity-0" : "opacity-100"
-              }`}
+              key={project.name}
+              className="group relative border border-border hover:border-zjav/40 transition-all duration-300 bg-secondary/30 hover:bg-secondary/60"
             >
-              <div className="w-16 h-16 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center">
-                <span className="font-display text-2xl text-foreground">
-                  {activeTestimonial.author.charAt(0)}
-                </span>
-              </div>
-              <div>
-                <p className="text-lg font-medium text-foreground">{activeTestimonial.author}</p>
-                <p className="text-muted-foreground">
-                  {activeTestimonial.role}, {activeTestimonial.company}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Metric Highlight */}
-          <div className="lg:col-span-4 flex flex-col justify-center">
-            <div
-              className={`p-8 border border-foreground/10 transition-all duration-300 ${
-                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-              }`}
-            >
-              <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-4">
-                Výsledok
-              </span>
-              <p className="font-display text-3xl md:text-4xl text-foreground">
-                {activeTestimonial.metric}
-              </p>
-            </div>
-
-            {/* Navigation Dots */}
-            <div className="flex gap-2 mt-8">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setIsAnimating(true);
-                    setTimeout(() => {
-                      setActiveIndex(idx);
-                      setIsAnimating(false);
-                    }, 300);
-                  }}
-                  className={`h-2 transition-all duration-300 ${
-                    idx === activeIndex
-                      ? "w-8 bg-foreground"
-                      : "w-2 bg-foreground/20 hover:bg-foreground/40"
-                  }`}
+              {/* Logo area */}
+              <div className={`flex items-center justify-center h-32 ${project.logoBg} relative overflow-hidden`}>
+                <Image
+                  src={project.logo}
+                  alt={project.name}
+                  width={project.logoWidth}
+                  height={project.logoHeight}
+                  className="object-contain max-h-12"
                 />
-              ))}
-            </div>
-          </div>
-        </div>
+              </div>
 
-        {/* Company Logos Marquee Label */}
-        <div className="mt-24 pt-12 border-t border-foreground/10">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 text-center">
-            Dôverujú mi podnikatelia po celom Slovensku
-          </p>
-        </div>
-      </div>
-      
-      {/* Full-width marquee outside container */}
-      <div className="w-full">
-        <div className="flex gap-16 items-center marquee">
-          {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex gap-16 items-center shrink-0">
-              {["Stolárstvo Kováč", "Kvety Horváth", "Elektro Novák", "Bio Obchodík", "Autoservis Miko", "Reštaurácia Dunaj", "Fit Klub Nitra", "Advokát Tóth"].map(
-                (company) => (
-                  <span
-                    key={`${setIdx}-${company}`}
-                    className="font-display text-xl md:text-2xl text-foreground/30 whitespace-nowrap hover:text-foreground transition-colors duration-300"
-                  >
-                    {company}
-                  </span>
-                )
-              )}
+              {/* Info bar */}
+              <div className="px-5 py-4 flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-1">
+                  <span className="font-mono text-xs text-muted-foreground">{project.tag}</span>
+                  <span className="font-display text-sm tracking-wide text-foreground">{project.name}</span>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  {project.status === "live" ? (
+                    <a
+                      href={project.url!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono text-xs text-zjav border border-zjav/30 hover:border-zjav/60 hover:bg-zjav/5 px-3 py-1.5 transition-all duration-200"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                      Nasadené
+                      <ExternalLink className="w-3 h-3 ml-0.5" />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
+                      Pripravujeme
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
