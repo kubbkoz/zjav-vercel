@@ -56,7 +56,7 @@ const projects = [
     logoWidth: 120,
     logoHeight: 32,
     status: "soon" as const,
-    tag: "Firemný web",
+    tag: "Firemný web / E-shop",
   },
 ];
 
