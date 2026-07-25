@@ -107,7 +107,7 @@ export function MetricsSection() {
             <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
               <span className="block font-mono text-zjav text-2xl mb-1">_</span>
               <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
-                Čísla, ktoré hovoria za všetko.
+                Čísla, ktoré hovoria <span className="text-muted-foreground">za všetko.</span>
                 <span className="cursor-blink ml-2">_</span>
               </h2>
             </div>
