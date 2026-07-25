@@ -8,6 +8,11 @@ const ContactModal = dynamic(
   { ssr: false }
 );
 
+const ScrollToTop = dynamic(
+  () => import("./scroll-to-top").then((m) => ({ default: m.ScrollToTop })),
+  { ssr: false }
+);
+
 interface ModalContextValue {
   openModal: () => void;
 }
@@ -27,6 +32,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     <ModalContext.Provider value={{ openModal }}>
       {children}
       <ContactModal isOpen={isOpen} onClose={closeModal} />
+      <ScrollToTop />
     </ModalContext.Provider>
   );
 }
