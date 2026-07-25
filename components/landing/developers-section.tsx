@@ -218,8 +218,8 @@ export function DevelopersSection() {
             
             {/* Links */}
             <div className="mt-6 flex items-center gap-6 text-sm">
-              <a href="#pricing" className="text-zjav hover:underline underline-offset-4">
-                Pozrieť cenník
+              <a href="#contact" className="text-zjav hover:underline underline-offset-4">
+                Chcem náhľad zadarmo
               </a>
               <span className="text-foreground/20">|</span>
               <a href="#contact" className="text-muted-foreground hover:text-foreground">

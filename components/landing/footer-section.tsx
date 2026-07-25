@@ -4,34 +4,28 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
-  Product: [
-    { name: "Features", href: "#features" },
-    { name: "How it works", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Integrations", href: "#integrations" },
+  "Služby": [
+    { name: "Ako to funguje", href: "#how-it-works" },
+    { name: "Čo získate", href: "#features" },
+    { name: "Technológie", href: "#developers" },
+    { name: "Referencie", href: "#testimonials" },
   ],
-  Developers: [
-    { name: "Documentation", href: "#developers" },
-    { name: "API Reference", href: "#" },
-    { name: "SDK", href: "#developers" },
-    { name: "Status", href: "#" },
+  "Riešenia": [
+    { name: "Firemné weby", href: "#features" },
+    { name: "E-shopy (Shopware 6)", href: "#developers" },
+    { name: "Import / Export dát", href: "#developers" },
+    { name: "Weby na mieru", href: "#features" },
   ],
-  Company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#", badge: "Hiring" },
-    { name: "Contact", href: "#" },
-  ],
-  Legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-    { name: "Security", href: "#security" },
+  "Kontakt": [
+    { name: "ahoj@zjav.sk", href: "mailto:ahoj@zjav.sk" },
+    { name: "Náhľad zadarmo", href: "#contact", badge: "24h" },
+    { name: "Nezáväzný dopyt", href: "#contact" },
   ],
 };
 
 const socialLinks = [
-  { name: "Twitter", href: "#" },
-  { name: "GitHub", href: "#" },
+  { name: "Instagram", href: "#" },
+  { name: "Facebook", href: "#" },
   { name: "LinkedIn", href: "#" },
 ];
 
@@ -46,16 +40,18 @@ export function FooterSection() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Main Footer */}
         <div className="py-16 lg:py-24">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-              <a href="#" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display">Optimus</span>
-                <span className="text-xs text-muted-foreground font-mono">TM</span>
+              <a href="#" className="inline-flex items-center gap-3 mb-6">
+                <span className="text-2xl font-display uppercase tracking-tight">
+                  ZJAV<span className="text-zjav text-glow-zjav">_</span>
+                </span>
+                <span className="text-xs text-muted-foreground font-mono">zjav.sk</span>
               </a>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
-                The platform for teams who ship. Build, deploy, and scale with unprecedented velocity.
+                Rýchle a spoľahlivé weby na mieru. Prototyp zadarmo do 24 hodín, hotový web do 7 dní. Zviditeľním vaše podnikanie.
               </p>
 
               {/* Social Links */}
@@ -86,7 +82,7 @@ export function FooterSection() {
                       >
                         {link.name}
                         {"badge" in link && link.badge && (
-                          <span className="text-xs px-2 py-0.5 bg-foreground text-background rounded-full">
+                          <span className="text-xs px-2 py-0.5 bg-zjav text-background rounded-full font-mono">
                             {link.badge}
                           </span>
                         )}
@@ -102,13 +98,13 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            2025 Optimus. All rights reserved.
+            © {new Date().getFullYear()} ZJAV_ · zjav.sk · Všetky práva vyhradené.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              All systems operational
+            <span className="flex items-center gap-2 font-mono">
+              <span className="w-2 h-2 rounded-full bg-signal animate-pulse" />
+              Prijímam nové projekty
             </span>
           </div>
         </div>

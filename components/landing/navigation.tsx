@@ -8,7 +8,7 @@ const navLinks = [
   { name: "Ako to funguje", href: "#how-it-works" },
   { name: "Čo získate", href: "#features" },
   { name: "Technológie", href: "#developers" },
-  { name: "Cena", href: "#pricing" },
+  { name: "Referencie", href: "#testimonials" },
 ];
 
 export function Navigation() {
@@ -67,8 +67,8 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#pricing" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
-              Cenník
+            <a href="#contact" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+              Kontakt
             </a>
             <Button
               size="sm"
@@ -136,7 +136,7 @@ export function Navigation() {
               className="flex-1 rounded-full h-14 text-base border-foreground/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Cenník
+              Kontakt
             </Button>
             <Button 
               className="flex-1 bg-zjav hover:bg-zjav-dark text-background rounded-full h-14 text-base glow-zjav"

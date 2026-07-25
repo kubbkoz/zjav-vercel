@@ -31,19 +31,19 @@ export function CtaSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div
-          className={`relative border border-foreground transition-all duration-1000 ${
+          className={`relative border border-zjav/40 glow-zjav transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           onMouseMove={handleMouseMove}
         >
           {/* Spotlight effect */}
           <div 
-            className="absolute inset-0 opacity-10 pointer-events-none transition-opacity duration-300"
+            className="absolute inset-0 opacity-100 pointer-events-none transition-opacity duration-300"
             style={{
-              background: `radial-gradient(600px circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0,0,0,0.15), transparent 40%)`
+              background: `radial-gradient(600px circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0,207,255,0.12), transparent 40%)`
             }}
           />
           
@@ -51,23 +51,29 @@ export function CtaSection() {
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
               {/* Left content */}
               <div className="flex-1">
-                <h2 className="text-4xl lg:text-7xl font-display tracking-tight mb-8 leading-[0.95]">
-                  Ready to build
+                <span className="inline-flex items-center gap-3 rounded-full border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                  Prototyp do 24 hodín
+                </span>
+
+                <h2 className="text-4xl lg:text-7xl font-display uppercase tracking-tight mb-8 leading-[0.95]">
+                  Zviditeľnite
                   <br />
-                  something great?
+                  svoje podnikanie.
                 </h2>
 
                 <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
-                  Join thousands of teams shipping faster with Optimus. 
-                  Start free, scale infinitely.
+                  Chcete viac zákazníkov a modernú online prezentáciu? Napíšte mi
+                  a do 24 hodín dostanete náhľad webu <span className="text-foreground">zadarmo</span> —
+                  až potom sa rozhodnete.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <Button
                     size="lg"
-                    className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
+                    className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-full glow-zjav font-medium group"
                   >
-                    Start building free
+                    Chcem náhľad zadarmo
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </Button>
                   <Button
@@ -75,12 +81,12 @@ export function CtaSection() {
                     variant="outline"
                     className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
                   >
-                    Talk to sales
+                    Napíšte mi
                   </Button>
                 </div>
 
                 <p className="text-sm text-muted-foreground mt-8 font-mono">
-                  No credit card required
+                  Bez záväzku · Bez zálohy · Hotový web do 7 dní
                 </p>
               </div>
 
@@ -92,8 +98,8 @@ export function CtaSection() {
           </div>
 
           {/* Decorative corner */}
-          <div className="absolute top-0 right-0 w-32 h-32 border-b border-l border-foreground/10" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 border-t border-r border-foreground/10" />
+          <div className="absolute top-0 right-0 w-32 h-32 border-b border-l border-zjav/20" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 border-t border-r border-zjav/20" />
         </div>
       </div>
     </section>
