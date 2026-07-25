@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Čo získate", href: "#features" },
   { name: "Technológie", href: "#developers" },
   { name: "Referencie", href: "#testimonials" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 export function Navigation() {
