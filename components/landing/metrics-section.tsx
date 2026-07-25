@@ -109,9 +109,9 @@ export function MetricsSection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <span className="font-mono text-zjav">&gt;_</span> Podmienky, ktoré
+              <span className="font-mono text-zjav">_</span> Čísla,
               <br />
-              dávajú zmysel.
+              ktoré hovoria za všetko.
               <span className="cursor-blink ml-2">_</span>
             </h2>
           </div>

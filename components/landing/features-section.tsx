@@ -336,9 +336,9 @@ export function FeaturesSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <span className="font-mono text-zjav">&gt;_</span> Prototyp zadarmo.
+            <span className="font-mono text-zjav">_</span> Prototyp
             <br />
-            <span className="text-muted-foreground">Nulové riziko.</span>
+            <span className="text-muted-foreground">zadarmo.</span>
             <span className="cursor-blink ml-2">_</span>
           </h2>
         </div>

@@ -50,9 +50,9 @@ export function InfrastructureSection() {
               Výkon
             </span>
             <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight mb-8">
-              <span className="font-mono text-zjav">&gt;_</span> Rýchly web
+              <span className="font-mono text-zjav">_</span> Rýchly web
               <br />
-              je samozrejmosť.
+              je základ.
               <span className="cursor-blink ml-2">_</span>
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
