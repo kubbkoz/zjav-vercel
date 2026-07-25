@@ -80,6 +80,16 @@ function DeployVisual() {
   );
 }
 
+const AI_NODES = [0, 1, 2, 3, 4, 5].map((i) => {
+  const angle = (i * 60) * (Math.PI / 180);
+  const radius = 50;
+  return {
+    i,
+    x2: parseFloat((100 + Math.cos(angle) * radius).toFixed(4)),
+    y2: parseFloat((80 + Math.sin(angle) * radius).toFixed(4)),
+  };
+});
+
 function AIVisual() {
   return (
     <svg viewBox="0 0 200 160" className="w-full h-full">
@@ -89,17 +99,14 @@ function AIVisual() {
       </circle>
       
       {/* Orbiting nodes */}
-      {[0, 1, 2, 3, 4, 5].map((i) => {
-        const angle = (i * 60) * (Math.PI / 180);
-        const radius = 50;
-        return (
+      {AI_NODES.map(({ i, x2, y2 }) => (
           <g key={i}>
             {/* Connection line */}
             <line
               x1="100"
               y1="80"
-              x2={100 + Math.cos(angle) * radius}
-              y2={80 + Math.sin(angle) * radius}
+              x2={x2}
+              y2={y2}
               stroke="currentColor"
               strokeWidth="1"
               opacity="0.3"
@@ -115,8 +122,8 @@ function AIVisual() {
             
             {/* Outer node */}
             <circle
-              cx={100 + Math.cos(angle) * radius}
-              cy={80 + Math.sin(angle) * radius}
+              cx={x2}
+              cy={y2}
               r="6"
               fill="none"
               stroke="currentColor"
@@ -131,8 +138,7 @@ function AIVisual() {
               />
             </circle>
           </g>
-        );
-      })}
+        ))}
       
       {/* Pulse rings */}
       <circle cx="100" cy="80" r="30" fill="none" stroke="currentColor" strokeWidth="1" opacity="0">
