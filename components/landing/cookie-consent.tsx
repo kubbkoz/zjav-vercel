@@ -108,7 +108,7 @@ export function CookieBanner({ onOpenSettings }: CookieConsentProps) {
           <Button
             onClick={acceptAll}
             size="sm"
-            className="bg-zjav hover:bg-zjav-dark text-background rounded-full px-5 glow-zjav font-medium"
+            className="bg-zjav hover:bg-zjav-dark text-background rounded-lg px-5 glow-zjav font-medium"
           >
             Prijať všetky
           </Button>
@@ -116,7 +116,7 @@ export function CookieBanner({ onOpenSettings }: CookieConsentProps) {
             onClick={rejectAll}
             size="sm"
             variant="outline"
-            className="rounded-full px-5 border-foreground/20 hover:bg-foreground/5"
+            className="rounded-lg px-5 border-foreground/20 hover:bg-foreground/5"
           >
             Len nevyhnutné
           </Button>
@@ -124,7 +124,7 @@ export function CookieBanner({ onOpenSettings }: CookieConsentProps) {
             onClick={onOpenSettings}
             size="sm"
             variant="ghost"
-            className="rounded-full px-5 text-muted-foreground hover:text-foreground gap-1.5"
+            className="rounded-lg px-5 text-muted-foreground hover:text-foreground gap-1.5"
           >
             <Settings className="w-3.5 h-3.5" />
             Nastavenia
@@ -243,14 +243,14 @@ export function CookieSettings({ isOpen, onClose }: CookieSettingsProps) {
             onClick={acceptAll}
             size="sm"
             variant="ghost"
-            className="text-muted-foreground hover:text-foreground text-xs rounded-full"
+            className="text-muted-foreground hover:text-foreground text-xs rounded-lg"
           >
             Prijať všetky
           </Button>
           <Button
             onClick={save}
             size="sm"
-            className="bg-zjav hover:bg-zjav-dark text-background rounded-full px-6 glow-zjav font-medium"
+            className="bg-zjav hover:bg-zjav-dark text-background rounded-lg px-6 glow-zjav font-medium"
           >
             {saved ? "Uložené ✓" : "Uložiť nastavenia"}
           </Button>

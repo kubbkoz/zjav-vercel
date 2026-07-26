@@ -136,7 +136,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </p>
               <Button
                 onClick={onClose}
-                className="mt-4 bg-zjav hover:bg-zjav-dark text-background rounded-full px-8"
+                className="mt-4 bg-zjav hover:bg-zjav-dark text-background rounded-lg px-8"
               >
                 Zavrieť
               </Button>
@@ -238,7 +238,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <Button
                     type="submit"
                     disabled={status === "sending"}
-                    className="bg-zjav hover:bg-zjav-dark text-background rounded-full px-6 glow-zjav font-medium group"
+                    className="bg-zjav hover:bg-zjav-dark text-background rounded-lg px-6 glow-zjav font-medium group"
                   >
                     {status === "sending" ? (
                       <>

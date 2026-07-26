@@ -1,27 +1,17 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback } from "react";
-import dynamic from "next/dynamic";
-
-const ContactModal = dynamic(
-  () => import("./contact-modal").then((m) => ({ default: m.ContactModal })),
-  { ssr: false }
-);
-
-const ScrollToTop = dynamic(
-  () => import("./scroll-to-top").then((m) => ({ default: m.ScrollToTop })),
-  { ssr: false }
-);
-
-const CookieBanner = dynamic(
-  () => import("./cookie-consent").then((m) => ({ default: m.CookieBanner })),
-  { ssr: false }
-);
-
-const CookieSettings = dynamic(
-  () => import("./cookie-consent").then((m) => ({ default: m.CookieSettings })),
-  { ssr: false }
-);
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+  type ReactNode,
+} from "react";
+import { createPortal } from "react-dom";
+import { ContactModal } from "./contact-modal";
+import { ScrollToTop } from "./scroll-to-top";
+import { CookieBanner, CookieSettings } from "./cookie-consent";
 
 interface ModalContextValue {
   openModal: () => void;
@@ -37,7 +27,37 @@ export function useModal() {
   return useContext(ModalContext);
 }
 
-export function ModalProvider({ children }: { children: React.ReactNode }) {
+// Renders all floating overlays into document.body via a portal so they never
+// participate in the SSR tree and cannot shift Radix's fiber ID counter.
+function Overlays({
+  isOpen,
+  onClose,
+  cookieSettingsOpen,
+  onCloseCookieSettings,
+  onOpenCookieSettings,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  cookieSettingsOpen: boolean;
+  onCloseCookieSettings: () => void;
+  onOpenCookieSettings: () => void;
+}) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  return createPortal(
+    <>
+      <ContactModal isOpen={isOpen} onClose={onClose} />
+      <ScrollToTop />
+      <CookieBanner onOpenSettings={onOpenCookieSettings} />
+      <CookieSettings isOpen={cookieSettingsOpen} onClose={onCloseCookieSettings} />
+    </>,
+    document.body
+  );
+}
+
+export function ModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [cookieSettingsOpen, setCookieSettingsOpen] = useState(false);
 
@@ -49,10 +69,13 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   return (
     <ModalContext.Provider value={{ openModal, openCookieSettings }}>
       {children}
-      <ContactModal isOpen={isOpen} onClose={closeModal} />
-      <ScrollToTop />
-      <CookieBanner onOpenSettings={openCookieSettings} />
-      <CookieSettings isOpen={cookieSettingsOpen} onClose={closeCookieSettings} />
+      <Overlays
+        isOpen={isOpen}
+        onClose={closeModal}
+        cookieSettingsOpen={cookieSettingsOpen}
+        onCloseCookieSettings={closeCookieSettings}
+        onOpenCookieSettings={openCookieSettings}
+      />
     </ModalContext.Provider>
   );
 }

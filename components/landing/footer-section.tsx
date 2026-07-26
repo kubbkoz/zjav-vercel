@@ -88,7 +88,7 @@ export function FooterSection() {
                       >
                         {link.name}
                         {"badge" in link && link.badge && (
-                          <span className="text-xs px-2 py-0.5 bg-zjav text-background rounded-full font-mono">
+                          <span className="text-xs px-2 py-0.5 bg-zjav text-background rounded font-mono">
                             {link.badge}
                           </span>
                         )}
