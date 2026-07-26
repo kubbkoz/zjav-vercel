@@ -37,7 +37,7 @@ export function Navigation() {
       <nav 
         className={`mx-auto transition-all duration-500 ${
           isScrolled || isMobileMenuOpen
-            ? "bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl shadow-lg max-w-[1200px]"
+            ? "bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-lg shadow-lg max-w-[1200px]"
             : "bg-transparent max-w-[1400px]"
         }`}
       >
@@ -76,7 +76,7 @@ export function Navigation() {
             <Button
               size="sm"
               onClick={openModal}
-              className={`bg-zjav hover:bg-zjav-dark text-background rounded-full glow-zjav font-medium transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
+              className={`bg-zjav hover:bg-zjav-dark text-background rounded-lg glow-zjav font-medium transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
               Náhľad zadarmo
             </Button>
@@ -137,13 +137,13 @@ export function Navigation() {
           >
             <Button 
               variant="outline" 
-              className="flex-1 rounded-full h-14 text-base border-foreground/20"
+              className="flex-1 rounded-lg h-14 text-base border-foreground/20"
               onClick={() => { setIsMobileMenuOpen(false); openModal(); }}
             >
               Kontakt
             </Button>
             <Button 
-              className="flex-1 bg-zjav hover:bg-zjav-dark text-background rounded-full h-14 text-base glow-zjav"
+              className="flex-1 bg-zjav hover:bg-zjav-dark text-background rounded-lg h-14 text-base glow-zjav"
               onClick={() => { setIsMobileMenuOpen(false); openModal(); }}
             >
               Náhľad zadarmo

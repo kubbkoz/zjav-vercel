@@ -53,7 +53,7 @@ export function CtaSection() {
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
               {/* Left content */}
               <div className="flex-1">
-                <span className="inline-flex items-center gap-3 rounded-full border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav mb-8">
+                <span className="inline-flex items-center gap-3 rounded-lg border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
                   Prototyp do 24 hodín
                 </span>
@@ -76,7 +76,7 @@ export function CtaSection() {
                   <Button
                     size="lg"
                     onClick={openModal}
-                    className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-full glow-zjav font-medium group"
+                    className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-lg glow-zjav font-medium group"
                   >
                     Chcem náhľad zadarmo
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -85,7 +85,7 @@ export function CtaSection() {
                     size="lg"
                     variant="outline"
                     onClick={openModal}
-                    className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
+                    className="h-14 px-8 text-base rounded-lg border-foreground/20 hover:bg-foreground/5"
                   >
                     Napíšte mi
                   </Button>
