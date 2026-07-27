@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Oxanium, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { ModalProvider } from '@/components/landing/modal-provider'
 import './globals.css'
 
 const inter = Inter({ 
@@ -43,13 +44,17 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'tvorba webstránok',
-    'webstránky na mieru',
+    'tvorba webu Slovensko',
+    'weby na mieru',
+    'firemný web',
+    'webstránka pre firmu',
     'tvorba e-shopu',
-    'Shopware 6',
+    'e-shop Shopware 6',
     'Next.js web',
-    'firemný web Slovensko',
     'web zadarmo',
+    'náhľad webu zadarmo',
     'web do 7 dní',
+    'lacná tvorba webstránok',
   ],
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
@@ -156,7 +161,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${oxanium.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        {children}
+        <ModalProvider>{children}</ModalProvider>
         <Analytics />
         <SpeedInsights />
       </body>
