@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useModal } from "./modal-provider";
 
-const navLinks = [
+const navLinks: { name: string; href: string }[] = [
   { name: "Ako to funguje", href: "#how-it-works" },
   { name: "Čo získate", href: "#features" },
   { name: "Technológie", href: "#developers" },

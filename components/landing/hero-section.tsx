@@ -11,7 +11,7 @@ const AnimatedSphere = dynamic(
   { ssr: false, loading: () => null }
 );
 
-const words = ["zviditeľní", "predáva", "presvedčí", "posunie"];
+const words = ["zviditeľní", "predáva", "presvedčí", "posunie"] as const;
 
 export function HeroSection() {
   const { openModal } = useModal();
