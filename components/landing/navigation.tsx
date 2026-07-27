@@ -6,11 +6,12 @@ import { Menu, X } from "lucide-react";
 import { useModal } from "./modal-provider";
 
 const navLinks: { name: string; href: string }[] = [
-  { name: "Ako to funguje", href: "#how-it-works" },
-  { name: "Čo získate", href: "#features" },
-  { name: "Technológie", href: "#developers" },
-  { name: "Referencie", href: "#testimonials" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Ako to funguje", href: "/#how-it-works" },
+  { name: "Čo získate", href: "/#features" },
+  { name: "Technológie", href: "/#developers" },
+  { name: "Referencie", href: "/#testimonials" },
+  { name: "Cenník", href: "/cennik" },
+  { name: "FAQ", href: "/#faq" },
 ];
 
 export function Navigation() {
@@ -47,7 +48,7 @@ export function Navigation() {
           }`}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center gap-3 group">
             <span className={`font-display uppercase tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>
               ZJAV<span className="text-zjav text-glow-zjav">_</span>
             </span>
@@ -70,7 +71,7 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#contact" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+            <a href="/#contact" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
               Kontakt
             </a>
             <Button

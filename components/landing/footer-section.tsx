@@ -6,23 +6,24 @@ import { useModal } from "./modal-provider";
 
 const footerLinks = {
   "Služby": [
-    { name: "Ako to funguje", href: "#how-it-works" },
-    { name: "Čo získate", href: "#features" },
-    { name: "Technológie", href: "#developers" },
-    { name: "Referencie", href: "#testimonials" },
+    { name: "Ako to funguje", href: "/#how-it-works" },
+    { name: "Čo získate", href: "/#features" },
+    { name: "Technológie", href: "/#developers" },
+    { name: "Referencie", href: "/#testimonials" },
+    { name: "Cenník", href: "/cennik" },
   ],
   "Riešenia": [
-    { name: "Firemné weby", href: "#features" },
-    { name: "E-shopy (Shopware 6)", href: "#developers" },
-    { name: "Import / Export dát", href: "#developers" },
-    { name: "Weby na mieru", href: "#features" },
+    { name: "Firemné weby", href: "/firemne-weby" },
+    { name: "E-shopy (Shopware 6)", href: "/e-shop-shopware" },
+    { name: "Import / Export dát", href: "/#developers" },
+    { name: "Weby na mieru", href: "/firemne-weby" },
   ],
   "Kontakt": [
     { name: "hello@zjav.sk", href: "mailto:hello@zjav.sk" },
     { name: "+421 918 564 238", href: "tel:+421918564238" },
     { name: "Suchá Hora 143", href: "https://www.google.com/maps/search/?api=1&query=Such%C3%A1+Hora+143" },
-    { name: "Náhľad zadarmo", href: "#contact", badge: "24h" },
-    { name: "Nezáväzný dopyt", href: "#contact" },
+    { name: "Náhľad zadarmo", href: "/#contact", badge: "24h" },
+    { name: "Nezáväzný dopyt", href: "/#contact" },
   ],
 };
 
@@ -49,7 +50,7 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-              <a href="#" className="inline-flex items-center gap-3 mb-6">
+              <a href="/" className="inline-flex items-center gap-3 mb-6">
                 <span className="text-2xl font-display uppercase tracking-tight">
                   ZJAV<span className="text-zjav text-glow-zjav">_</span>
                 </span>
