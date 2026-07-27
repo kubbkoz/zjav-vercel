@@ -11,26 +11,23 @@ import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
 import { FooterSection } from "@/components/landing/footer-section";
-import { ModalProvider } from "@/components/landing/modal-provider";
 
 export default async function Home() {
   return (
-    <ModalProvider>
-      <main className="relative min-h-screen overflow-x-hidden noise-overlay">
-        <Navigation />
-        <HeroSection />
-        <FeaturesSection />
-        <HowItWorksSection />
-        <InfrastructureSection />
-        <MetricsSection />
-        <IntegrationsSection />
-        <SecuritySection />
-        <DevelopersSection />
-        <TestimonialsSection />
-        <FaqSection />
-        <CtaSection />
-        <FooterSection />
-      </main>
-    </ModalProvider>
+    <main className="relative min-h-screen overflow-x-hidden noise-overlay">
+      <Navigation />
+      <HeroSection />
+      <FeaturesSection />
+      <HowItWorksSection />
+      <InfrastructureSection />
+      <MetricsSection />
+      <IntegrationsSection />
+      <SecuritySection />
+      <DevelopersSection />
+      <TestimonialsSection />
+      <FaqSection />
+      <CtaSection />
+      <FooterSection />
+    </main>
   );
 }
