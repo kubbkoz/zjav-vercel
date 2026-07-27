@@ -15,12 +15,8 @@ const words = ["zviditeľní", "predáva", "presvedčí", "posunie"] as const;
 
 export function HeroSection() {
   const { openModal } = useModal();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
