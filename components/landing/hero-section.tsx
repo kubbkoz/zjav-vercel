@@ -167,11 +167,11 @@ export function HeroSection() {
                   { value: "0 €", label: "za nezáväzný náhľad", company: "NAJSKÔR VIDÍTE" },
                   { value: "100%", label: "vlastný dizajn", company: "SHOPWARE · NUXT" },
                 ].map((stat) => (
-                  <div key={`${stat.company}-${i}`} className="flex items-baseline gap-4">
-                    <span className="text-4xl lg:text-5xl font-display text-zjav">{stat.value}</span>
-                    <span className="text-sm text-muted-foreground">
+                  <div key={`${stat.company}-${i}`} className="flex items-baseline gap-3">
+                    <span className="text-2xl lg:text-4xl font-display text-zjav">{stat.value}</span>
+                    <span className="text-xs lg:text-sm text-muted-foreground">
                       {stat.label}
-                      <span className="block font-mono text-xs mt-1">{stat.company}</span>
+                      <span className="block font-mono text-[10px] lg:text-xs mt-0.5 opacity-60">{stat.company}</span>
                     </span>
                   </div>
                 ))}
