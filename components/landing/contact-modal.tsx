@@ -11,6 +11,20 @@ interface ContactModalProps {
 
 type Status = "idle" | "sending" | "success" | "error";
 
+// Reflects the modal's state in the URL (?form=open / ?form=submitted) so
+// Google Analytics can pick it up as a trackable pageview/history change,
+// without disturbing any existing query params (e.g. UTM) or browser history.
+function setFormUrlParam(value: "open" | "submitted" | null) {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (value) {
+    url.searchParams.set("form", value);
+  } else {
+    url.searchParams.delete("form");
+  }
+  window.history.replaceState(window.history.state, "", url.toString());
+}
+
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -50,6 +64,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setErrorMsg("");
       setForm({ name: "", email: "", phone: "", message: "", honeypot: "" });
       formLoadedAtRef.current = Date.now();
+      setFormUrlParam("open");
+
+      return () => {
+        setFormUrlParam(null);
+      };
     }
   }, [isOpen]);
 
@@ -88,6 +107,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       }
 
       setStatus("success");
+      setFormUrlParam("submitted");
     } catch {
       setErrorMsg("Odoslanie zlyhalo. Skúste znova alebo napíšte priamo na hello@zjav.sk");
       setStatus("error");
