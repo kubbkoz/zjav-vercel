@@ -20,6 +20,31 @@ const defaultPreferences: CookiePreferences = {
   marketing: false,
 };
 
+export const CONSENT_CHANGE_EVENT = "zjav:consent-change";
+
+// Shared consent read so every consent-gated integration (Pixel script,
+// server-side Lead events, ...) agrees on the same source of truth.
+export function hasMarketingConsent(): boolean {
+  if (typeof window === "undefined") return false;
+  const raw = Cookies.get(COOKIE_KEY);
+  if (!raw) return false;
+  try {
+    return !!(JSON.parse(raw) as CookiePreferences).marketing;
+  } catch {
+    return false;
+  }
+}
+
+// Lets consent-gated scripts (e.g. the Facebook Pixel) react immediately
+// when the visitor changes their preferences, without a page reload.
+function notifyConsentChange(prefs: CookiePreferences) {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent<CookiePreferences>(CONSENT_CHANGE_EVENT, { detail: prefs })
+    );
+  }
+}
+
 const categories = [
   {
     key: "necessary" as const,
@@ -74,12 +99,15 @@ export function CookieBanner({ onOpenSettings }: CookieConsentProps) {
   }, []);
 
   const acceptAll = () => {
-    Cookies.set(COOKIE_KEY, JSON.stringify({ necessary: true, analytics: true, marketing: true }), { expires: COOKIE_EXPIRY, sameSite: "Lax" });
+    const all = { necessary: true, analytics: true, marketing: true };
+    Cookies.set(COOKIE_KEY, JSON.stringify(all), { expires: COOKIE_EXPIRY, sameSite: "Lax" });
+    notifyConsentChange(all);
     setVisible(false);
   };
 
   const rejectAll = () => {
     Cookies.set(COOKIE_KEY, JSON.stringify(defaultPreferences), { expires: COOKIE_EXPIRY, sameSite: "Lax" });
+    notifyConsentChange(defaultPreferences);
     setVisible(false);
   };
 
@@ -159,6 +187,7 @@ export function CookieSettings({ isOpen, onClose }: CookieSettingsProps) {
 
   const save = () => {
     Cookies.set(COOKIE_KEY, JSON.stringify(prefs), { expires: COOKIE_EXPIRY, sameSite: "Lax" });
+    notifyConsentChange(prefs);
     setSaved(true);
     setTimeout(() => { setSaved(false); onClose(); }, 900);
   };
@@ -167,6 +196,7 @@ export function CookieSettings({ isOpen, onClose }: CookieSettingsProps) {
     const all = { necessary: true, analytics: true, marketing: true };
     setPrefs(all);
     Cookies.set(COOKIE_KEY, JSON.stringify(all), { expires: COOKIE_EXPIRY, sameSite: "Lax" });
+    notifyConsentChange(all);
     setTimeout(onClose, 300);
   };
 

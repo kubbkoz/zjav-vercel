@@ -52,6 +52,7 @@
     "expo-asset": "latest",
     "expo-file-system": "latest",
     "expo-gl": "latest",
+    "facebook-nodejs-business-sdk": "^24.0.1",
     "geist": "1.7.0",
     "input-otp": "1.4.1",
     "js-cookie": "^3.0.8",
@@ -75,6 +76,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.9",
+    "@types/facebook-nodejs-business-sdk": "^24.0.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
