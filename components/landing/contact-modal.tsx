@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { X, ArrowRight, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { hasMarketingConsent } from "./cookie-consent";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -23,6 +24,31 @@ function setFormUrlParam(value: "open" | "submitted" | null) {
     url.searchParams.delete("form");
   }
   window.history.replaceState(window.history.state, "", url.toString());
+}
+
+// Fires the Meta Pixel "Lead" event client-side and mirrors it to the
+// Conversions API with the same event ID for deduplication. Best-effort —
+// never blocks or fails the actual form submission.
+function trackLeadEvent(email: string, phone: string) {
+  if (typeof window === "undefined" || !hasMarketingConsent()) return;
+  const eventId = crypto.randomUUID();
+  const eventSourceUrl = window.location.href;
+
+  const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+  fbq?.("track", "Lead", { content_name: "Kontaktný formulár" }, { eventID: eventId });
+
+  fetch("/api/fb-events", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      eventName: "Lead",
+      eventId,
+      eventSourceUrl,
+      contentName: "Kontaktný formulár",
+      email,
+      phone,
+    }),
+  }).catch(() => {});
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
@@ -108,6 +134,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       setStatus("success");
       setFormUrlParam("submitted");
+      trackLeadEvent(form.email, form.phone);
     } catch {
       setErrorMsg("Odoslanie zlyhalo. Skúste znova alebo napíšte priamo na hello@zjav.sk");
       setStatus("error");

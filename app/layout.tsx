@@ -4,6 +4,7 @@ import { Inter, Oxanium, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ModalProvider } from '@/components/landing/modal-provider'
+import { FacebookPixel } from '@/components/landing/facebook-pixel'
 import './globals.css'
 
 const inter = Inter({ 
@@ -164,6 +165,7 @@ export default function RootLayout({
         <ModalProvider>{children}</ModalProvider>
         <Analytics />
         <SpeedInsights />
+        <FacebookPixel />
       </body>
     </html>
   )
