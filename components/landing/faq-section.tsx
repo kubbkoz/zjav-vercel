@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Koľko stojí tvorba webu?",
     answer:
-      "Cenu vždy dohodneme vopred a transparentne — bez skrytých poplatkov a bez zálohy. Najskôr dostanete prototyp úplne zadarmo, takže presne viete, za čo platíte, ešte predtým, než sa rozhodnete.",
+      "Firemný web od 490 € (jednostránkový balík ŠTART_), od 790 € za web do 5 podstránok (PREDAJ_, najobľúbenejší) alebo od 990 € za web do 7 podstránok s meraním konverzií (VÝKON_). E-shop na Shopware 6 od 2 490 €. Presnú cenu potvrdíme po prototype zadarmo, bez zálohy vopred. Celý cenník nájdete na /cennik.",
   },
   {
     question: "Ako dlho trvá, kým bude môj web hotový?",
@@ -32,7 +32,12 @@ const faqs = [
   {
     question: "Viete postaviť aj e-shop?",
     answer:
-      "Áno. Pre e-shopy používam Shopware 6 ako voliteľný backend pripravený na rast — od produktového katalógu až po platby.",
+      "Áno. Pre e-shopy používam Shopware 6 ako backend pripravený na rast — od produktového katalógu až po platby cez Stripe. E-shop na Shopware 6 začína od 2 490 €.",
+  },
+  {
+    question: "Čo je mesačná starostlivosť a musím si ju platiť?",
+    answer:
+      "Starostlivosť_ je nepovinná mesačná služba po spustení webu — hosting, monitoring 24/7, SSL, zálohy a bezpečnostné aktualizácie od 39 €/mesiac (89 €/mesiac pre e-shopy). Prvé 3 mesiace máte v cene webu, potom pokračuje, kým ju nezrušíte — kedykoľvek, bez výpovednej lehoty.",
   },
   {
     question: "Aké technológie používate?",

@@ -28,10 +28,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
+  { name: "Instagram", href: "https://www.instagram.com/zjav.sk" },
+  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61590535290157" },
   { name: "GitHub", href: "https://github.com/kubbkoz" },
-  { name: "Instagram", href: "#" },
-  { name: "Facebook", href: "#" },
-  { name: "LinkedIn", href: "#" },
 ];
 
 export function FooterSection() {
@@ -67,6 +66,8 @@ export function FooterSection() {
                   <a
                     key={link.name}
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
                   >
                     {link.name}

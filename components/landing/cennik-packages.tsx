@@ -17,12 +17,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useModal } from "./modal-provider";
+import { packagePricing, eshopPricing, carePricing } from "@/lib/pricing";
 
 /* ------------------------------------------------------------------ */
 /*  DÁTA — BALÍKY                                                      */
 /* ------------------------------------------------------------------ */
 
-type Package = {
+export type Package = {
   id: string;
   name: string;
   promise: string;
@@ -34,12 +35,12 @@ type Package = {
   badge?: string;
 };
 
-const packages: Package[] = [
+export const packages: Package[] = [
   {
     id: "start",
     name: "ŠTART_",
     promise: "Aby vás našli.",
-    price: 490,
+    price: packagePricing[0].price,
     scope: "One page web",
     icon: Zap,
     features: [
@@ -54,7 +55,7 @@ const packages: Package[] = [
     id: "predaj",
     name: "PREDAJ_",
     promise: "Aby vám web predával.",
-    price: 790,
+    price: packagePricing[1].price,
     scope: "Do 5 podstránok",
     icon: TrendingUp,
     highlight: true,
@@ -73,7 +74,7 @@ const packages: Package[] = [
     id: "vykon",
     name: "VÝKON_",
     promise: "Aby ste vedeli, čo funguje.",
-    price: 990,
+    price: packagePricing[2].price,
     scope: "Do 7 podstránok",
     icon: Activity,
     features: [
@@ -87,9 +88,9 @@ const packages: Package[] = [
 ];
 
 export const eshop = {
-  name: "E-SHOP_",
+  name: eshopPricing.name,
   promise: "Shopware 6 na mieru.",
-  price: 2490,
+  price: eshopPricing.price,
   features: [
     "Kompletný e-shop na Shopware 6",
     "Platobná brána a doprava nastavené na mieru",
@@ -117,7 +118,7 @@ const carePlans: CarePlan[] = [
     id: "web",
     name: "STAROSTLIVOSŤ_",
     forWhom: "Pre firemné weby",
-    price: 39,
+    price: carePricing.web,
     highlight: true,
     features: [
       "Hosting na monitorovaných serveroch",
@@ -132,7 +133,7 @@ const carePlans: CarePlan[] = [
     id: "eshop",
     name: "STAROSTLIVOSŤ_ E-SHOP",
     forWhom: "Pre e-shopy na Shopware 6",
-    price: 89,
+    price: carePricing.eshop,
     features: [
       "Všetko zo základnej starostlivosti",
       "Bezpečnostné záplaty Shopware 6 do 72 hodín od vydania",

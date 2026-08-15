@@ -133,7 +133,11 @@ const jsonLd = {
         name: 'IČO',
         value: '50532596',
       },
-      sameAs: ['https://github.com/kubbkoz'],
+      sameAs: [
+        'https://www.instagram.com/zjav.sk',
+        'https://www.facebook.com/profile.php?id=61590535290157',
+        'https://github.com/kubbkoz',
+      ],
     },
     {
       '@type': 'WebSite',
