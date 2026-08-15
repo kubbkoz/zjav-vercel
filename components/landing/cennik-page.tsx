@@ -63,9 +63,9 @@ export function CennikHero() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          Každý web aj e-shop je iný, preto cenu nedávam paušálne na web — dohodneme
-          ju vopred, transparentne a na základe skutočného rozsahu vášho projektu.
-          Bez zálohy, bez skrytých poplatkov.
+          Tri balíky, jedna cena za e-shop a nulová záloha vopred. Ceny nižšie sú
+          štartovacie — konečnú potvrdíme po prototype, keď presne viete, čo
+          dostanete. Žiadne skryté poplatky.
         </p>
 
         <div
@@ -195,8 +195,8 @@ export function CennikFactors() {
           </span>
           <span className="block font-mono text-zjav text-2xl mb-1">_</span>
           <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
-            Cena podľa{" "}
-            <span className="text-muted-foreground">rozsahu, nie podľa šablóny.</span>
+            Čo posúva cenu{" "}
+            <span className="text-muted-foreground">nad štartovaciu sumu.</span>
             <span className="cursor-blink ml-2">_</span>
           </h2>
         </div>
@@ -222,9 +222,19 @@ export function CennikFactors() {
 
 const faqs = [
   {
-    question: "Prečo na webe nie sú konkrétne ceny?",
+    question: "Čo znamená „od“ pri cene balíka?",
     answer:
-      "Firemná prezentácia a e-shop na Shopware 6 majú úplne inú náročnosť, takže paušálna cena na webe by bola nepresná alebo zavádzajúca. Aby ste dostali férovú cenu, najprv uvidíte prototyp zadarmo a až potom cenu spoločne potvrdíme.",
+      "Uvedená suma je štartovacia cena balíka v jeho základnom rozsahu. Nad ňu ide cena vtedy, keď potrebujete niečo navyše — napríklad viac podstránok, prenos dát zo starého systému, viacjazyčnú verziu alebo napojenie na váš interný systém. Konečnú cenu poznáte vždy vopred, pred začatím prác.",
+  },
+  {
+    question: "Ako je to s garanciou rýchlosti 95+?",
+    answer:
+      "Garantujem Lighthouse Performance skóre 95 a viac, merané na mobile v deň odovzdania, na obsahu a doméne dodanej v rámci projektu. Ak sa tam nedostaneme, dolaďujem to na vlastné náklady. Ak si po odovzdaní pridáte skripty tretích strán — chat, externé widgety, ďalšie merania — skóre to môže ovplyvniť a to už mimo mojej kontroly nevie garantovať nikto.",
+  },
+  {
+    question: "Musím si platiť starostlivosť?",
+    answer:
+      "Nie. Prvé 3 mesiace máte starostlivosť v cene webu. Potom pokračuje za mesačný poplatok, kým ju nezrušíte — zrušiť ju viete kedykoľvek k poslednému dňu prebiehajúceho mesiaca, bez výpovednej lehoty. Aj po zrušení web ostáva váš: dostanete repozitár aj dáta a môžete ho presunúť kamkoľvek.",
   },
   {
     question: "Musím platiť zálohu vopred?",
