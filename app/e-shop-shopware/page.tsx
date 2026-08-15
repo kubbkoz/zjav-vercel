@@ -9,12 +9,12 @@ import {
   EshopProcess,
   EshopFaq,
 } from "@/components/landing/eshop-page";
-import { eshop } from "@/components/landing/cennik-packages";
+import { eshopPricing } from "@/lib/pricing";
 
 const siteUrl = "https://zjav.sk";
 const pageUrl = `${siteUrl}/e-shop-shopware`;
-const title = `E-shop na Shopware 6 od ${eshop.price} € — tvorba e-shopu na mieru`;
-const description = `Tvorba e-shopu na Shopware 6 od ${eshop.price} € s importom produktov, platbami cez Stripe a hostingom na Verceli. Nezáväzný prototyp e-shopu zadarmo do 24 hodín.`;
+const title = `E-shop na Shopware 6 od ${eshopPricing.price} € — tvorba e-shopu na mieru`;
+const description = `Tvorba e-shopu na Shopware 6 od ${eshopPricing.price} € s importom produktov, platbami cez Stripe a hostingom na Verceli. Nezáväzný prototyp e-shopu zadarmo do 24 hodín.`;
 
 export const metadata: Metadata = {
   title,
@@ -55,8 +55,8 @@ const jsonLd = {
       areaServed: { "@type": "Country", name: "Slovensko" },
       offers: {
         "@type": "Offer",
-        name: eshop.name.replace("_", ""),
-        price: eshop.price,
+        name: eshopPricing.name.replace("_", ""),
+        price: eshopPricing.price,
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
       },

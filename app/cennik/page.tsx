@@ -12,12 +12,13 @@ import {
   CennikPackages,
   CennikCare,
 } from "@/components/landing/cennik-packages";
+import { packagePricing, eshopPricing } from "@/lib/pricing";
 
 const siteUrl = "https://zjav.sk";
 const pageUrl = `${siteUrl}/cennik`;
-const title = "Cenník — web od 490 €, e-shop Shopware 6 od 2 490 €";
-const description =
-  "Konkrétne ceny balíkov: one page web od 490 €, web do 5 podstránok od 790 €, s meraním konverzií od 990 €, e-shop na Shopware 6 od 2 490 €. Bez zálohy vopred, prototyp zadarmo do 24 hodín.";
+const [startPrice, predajPrice, vykonPrice] = packagePricing.map((p) => p.price);
+const title = `Cenník — web od ${startPrice} €, e-shop Shopware 6 od ${eshopPricing.price} €`;
+const description = `Konkrétne ceny balíkov: one page web od ${startPrice} €, web do 5 podstránok od ${predajPrice} €, s meraním konverzií od ${vykonPrice} €, e-shop na Shopware 6 od ${eshopPricing.price} €. Bez zálohy vopred, prototyp zadarmo do 24 hodín.`;
 
 export const metadata: Metadata = {
   title,

@@ -5,15 +5,17 @@ import { CtaSection } from "@/components/landing/cta-section";
 import {
   FiremneWebyHero,
   FiremneWebyBenefits,
+  FiremneWebyPricing,
   FiremneWebyProcess,
   FiremneWebyFaq,
 } from "@/components/landing/firemne-weby-page";
+import { packagePricing } from "@/lib/pricing";
 
 const siteUrl = "https://zjav.sk";
 const pageUrl = `${siteUrl}/firemne-weby`;
-const title = "Firemné weby na mieru — tvorba webstránok pre firmy";
-const description =
-  "Firemný web na mieru pre vašu firmu alebo živnosť — responzívny dizajn, SSL, SEO základ aj kontaktný formulár. Nezáväzný prototyp zadarmo do 24 hodín, hotový web do 7 dní.";
+const startingPrice = packagePricing[0].price;
+const title = `Firemné weby na mieru od ${startingPrice} € — tvorba webstránok pre firmy`;
+const description = `Firemný web na mieru od ${startingPrice} € pre vašu firmu alebo živnosť — responzívny dizajn, SSL, SEO základ aj kontaktný formulár. Nezáväzný prototyp zadarmo do 24 hodín, hotový web do 7 dní.`;
 
 export const metadata: Metadata = {
   title,
@@ -52,6 +54,13 @@ const jsonLd = {
       url: pageUrl,
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: { "@type": "Country", name: "Slovensko" },
+      offers: packagePricing.map((pkg) => ({
+        "@type": "Offer",
+        name: pkg.name.replace("_", ""),
+        price: pkg.price,
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+      })),
     },
   ],
 };
@@ -66,6 +75,7 @@ export default function FiremneWebyPage() {
       <Navigation />
       <FiremneWebyHero />
       <FiremneWebyBenefits />
+      <FiremneWebyPricing />
       <FiremneWebyProcess />
       <FiremneWebyFaq />
       <CtaSection />

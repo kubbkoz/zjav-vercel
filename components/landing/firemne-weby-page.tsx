@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ArrowRight, Smartphone, Lock, Search, Mail, ExternalLink } from "lucide-react";
+import { ArrowRight, Smartphone, Lock, Search, Mail, ExternalLink, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useModal } from "./modal-provider";
+import { packages } from "./cennik-packages";
 
 const AnimatedSphere = dynamic(
   () => import("./animated-sphere").then((m) => ({ default: m.AnimatedSphere })),
@@ -197,6 +198,105 @@ export function FiremneWebyBenefits() {
   );
 }
 
+export function FiremneWebyPricing() {
+  const { openModal } = useModal();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="relative py-24 lg:py-32 bg-secondary border-y border-border">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="mb-16 lg:mb-20 max-w-3xl">
+          <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+            <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+            Cena
+          </span>
+          <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+          <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+            Tri balíky,{" "}
+            <span className="text-muted-foreground">jedna transparentná cena.</span>
+            <span className="cursor-blink ml-2">_</span>
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-px bg-foreground/10">
+          {packages.map((pkg, index) => (
+            <div
+              key={pkg.id}
+              className={`relative flex flex-col p-8 transition-all duration-700 ${
+                pkg.highlight ? "bg-background ring-1 ring-inset ring-zjav/30" : "bg-background"
+              } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${index * 120}ms` }}
+            >
+              {pkg.badge && (
+                <span className="absolute -top-px left-8 inline-flex items-center gap-2 bg-zjav px-3 py-1 text-xs font-mono uppercase tracking-wide text-background">
+                  <span className="w-1.5 h-1.5 rounded-full bg-background animate-pulse" />
+                  {pkg.badge}
+                </span>
+              )}
+              <div className="w-10 h-10 flex items-center justify-center border border-foreground/10 mb-6 mt-2">
+                <pkg.icon className="w-5 h-5 text-zjav" />
+              </div>
+              <h3 className="font-display text-2xl uppercase tracking-tight">{pkg.name}</h3>
+              <p className="text-muted-foreground mt-1 mb-6">{pkg.promise}</p>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-sm font-mono uppercase tracking-wide text-muted-foreground">od</span>
+                <span
+                  className={`font-display text-5xl leading-none ${pkg.highlight ? "text-zjav text-glow-zjav" : ""}`}
+                >
+                  {pkg.price}
+                </span>
+                <span className="font-display text-2xl text-muted-foreground">€</span>
+              </div>
+              <p className="text-sm font-mono uppercase tracking-wide text-muted-foreground mb-8">{pkg.scope}</p>
+
+              <ul className="space-y-3 mb-10 flex-1">
+                {pkg.features.slice(0, 4).map((feature) => (
+                  <li key={feature} className="flex gap-3 text-sm leading-relaxed">
+                    <Check className="w-4 h-4 text-signal shrink-0 mt-0.5" aria-hidden="true" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                variant="outline"
+                onClick={() => openModal({ type: "package", packageName: pkg.name })}
+                className={`w-full h-12 rounded-lg font-medium group ${
+                  pkg.highlight
+                    ? "bg-zjav hover:bg-zjav-dark text-background glow-zjav border-transparent"
+                    : "bg-transparent border-foreground/20 hover:border-zjav hover:bg-transparent hover:text-zjav"
+                }`}
+              >
+                Chcem prototyp zadarmo
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          Ceny sú štartovacie, bez DPH. Konečnú potvrdíme po prototype, keď presne viete, čo dostanete.{" "}
+          <Link href="/cennik" className="text-zjav hover:underline underline-offset-4">
+            Celý cenník aj s mesačnou starostlivosťou →
+          </Link>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 const steps = [
   {
     number: "I",
@@ -268,6 +368,11 @@ export function FiremneWebyProcess() {
 
 const faqs = [
   {
+    question: "Koľko stojí firemný web?",
+    answer:
+      "Od 490 € za jednostránkový web (balík ŠTART_), od 790 € za web do 5 podstránok s pokročilým SEO (balík PREDAJ_, najobľúbenejší), od 990 € za web do 7 podstránok s meraním konverzií (balík VÝKON_). Presnú cenu potvrdíme po prototype zadarmo.",
+  },
+  {
     question: "Dostanem šablónu, alebo web postavený na mieru?",
     answer:
       "Web na mieru. Dizajn aj obsah pripravím presne pre vaše podnikanie — žiadne generické šablóny z internetu.",
@@ -275,7 +380,7 @@ const faqs = [
   {
     question: "Koľko podstránok bude mať môj firemný web?",
     answer:
-      "Štruktúru prispôsobím vášmu podnikaniu — od jednoduchej jednostránkovej prezentácie až po web s viacerými sekciami podľa toho, čo skutočne potrebujete.",
+      "Podľa zvoleného balíka: ŠTART_ je jednostránkový web, PREDAJ_ má do 5 podstránok, VÝKON_ do 7 podstránok. Ak potrebujete viac, štruktúru prispôsobím na mieru.",
   },
   {
     question: "Ako dlho trvá, kým bude web hotový?",
