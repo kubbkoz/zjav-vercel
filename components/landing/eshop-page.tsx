@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ArrowRight, ShoppingCart, PackageCheck, CreditCard, Rocket, ExternalLink } from "lucide-react";
+import { ArrowRight, ShoppingCart, PackageCheck, CreditCard, Rocket, ExternalLink, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useModal } from "./modal-provider";
+import { eshop } from "./cennik-packages";
 
 const AnimatedSphere = dynamic(
   () => import("./animated-sphere").then((m) => ({ default: m.AnimatedSphere })),
@@ -74,7 +75,7 @@ export function EshopHero() {
           >
             <Button
               size="lg"
-              onClick={openModal}
+              onClick={() => openModal()}
               className="bg-zjav hover:bg-zjav-dark text-background px-6 h-12 text-sm lg:text-base lg:px-8 lg:h-14 rounded-lg glow-zjav font-medium group shrink-0"
             >
               Chcem náhľad e-shopu
@@ -193,6 +194,98 @@ export function EshopBenefits() {
   );
 }
 
+export function EshopPricing() {
+  const { openModal } = useModal();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="relative py-24 lg:py-32 bg-secondary border-y border-border">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="mb-16 lg:mb-20 max-w-3xl">
+          <span className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+            <span className="w-8 h-px bg-signal shadow-[0_0_8px_rgba(0,229,160,0.6)]" />
+            Cena
+          </span>
+          <span className="block font-mono text-zjav text-2xl mb-1">_</span>
+          <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tight leading-tight">
+            Koľko stojí{" "}
+            <span className="text-muted-foreground">e-shop na Shopware 6.</span>
+            <span className="cursor-blink ml-2">_</span>
+          </h2>
+        </div>
+
+        <div
+          className={`bg-background border border-foreground/10 p-8 lg:p-12 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-start">
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-10 h-10 flex items-center justify-center border border-foreground/10">
+                  <ShoppingCart className="w-5 h-5 text-zjav" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl uppercase tracking-tight">{eshop.name}</h3>
+                  <p className="text-muted-foreground">{eshop.promise}</p>
+                </div>
+              </div>
+
+              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                {eshop.features.map((feature) => (
+                  <li key={feature} className="flex gap-3 text-sm leading-relaxed">
+                    <Check className="w-4 h-4 text-signal shrink-0 mt-0.5" aria-hidden="true" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="lg:text-right lg:min-w-[220px]">
+              <div className="flex lg:justify-end items-baseline gap-2 mb-1">
+                <span className="text-sm font-mono uppercase tracking-wide text-muted-foreground">od</span>
+                <span className="font-display text-5xl leading-none">{eshop.price}</span>
+                <span className="font-display text-2xl text-muted-foreground">€</span>
+              </div>
+              <p className="text-sm font-mono uppercase tracking-wide text-muted-foreground mb-6">
+                Migrácia dát dohodou
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => openModal({ type: "package", packageName: eshop.name })}
+                className="w-full lg:w-auto h-12 px-6 rounded-lg bg-transparent border-foreground/20 hover:border-zjav hover:bg-transparent hover:text-zjav font-medium group"
+              >
+                Chcem e-shop
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          Cena je bez DPH a predstavuje štartovaciu hodnotu. Presnú kalkuláciu potvrdíme po
+          prototype, keď poznáme rozsah produktového katalógu a prípadnú migráciu dát.{" "}
+          <Link href="/cennik" className="text-zjav hover:underline underline-offset-4">
+            Celý cenník aj s ostatnými balíkmi →
+          </Link>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 const steps = [
   {
     number: "I",
@@ -280,8 +373,7 @@ const faqs = [
   },
   {
     question: "Koľko stojí e-shop na Shopware 6?",
-    answer:
-      "Cenu dohodneme vopred a transparentne, bez skrytých poplatkov a bez zálohy — presne podľa rozsahu vášho sortimentu. Najskôr uvidíte prototyp zadarmo.",
+    answer: `E-shop na Shopware 6 začína od ${eshop.price} € bez DPH. Presnú cenu potvrdíme vopred a transparentne, bez skrytých poplatkov a bez zálohy — podľa rozsahu vášho sortimentu a prípadnej migrácie dát. Najskôr uvidíte prototyp zadarmo.`,
   },
   {
     question: "Ako dlho trvá spustenie e-shopu?",

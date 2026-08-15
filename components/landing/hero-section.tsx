@@ -128,7 +128,7 @@ export function HeroSection() {
           >
             <Button 
               size="lg"
-              onClick={openModal}
+              onClick={() => openModal()}
               className="bg-zjav hover:bg-zjav-dark text-background px-6 h-12 text-sm lg:text-base lg:px-8 lg:h-14 rounded-lg glow-zjav font-medium group shrink-0"
             >
               Chcem náhľad zadarmo
