@@ -8,12 +8,16 @@ import {
   CennikFactors,
   CennikFaq,
 } from "@/components/landing/cennik-page";
+import {
+  CennikPackages,
+  CennikCare,
+} from "@/components/landing/cennik-packages";
 
 const siteUrl = "https://zjav.sk";
 const pageUrl = `${siteUrl}/cennik`;
-const title = "Cenník — koľko stojí tvorba webu a e-shopu";
+const title = "Cenník — web od 490 €, e-shop Shopware 6 od 2 490 €";
 const description =
-  "Ako tvorím cenu webu a e-shopu: transparentne, vopred, bez zálohy a bez skrytých poplatkov. Najskôr uvidíte prototyp zadarmo, potom sa dohodneme na cene.";
+  "Konkrétne ceny balíkov: one page web od 490 €, web do 5 podstránok od 790 €, s meraním konverzií od 990 €, e-shop na Shopware 6 od 2 490 €. Bez zálohy vopred, prototyp zadarmo do 24 hodín.";
 
 export const metadata: Metadata = {
   title,
@@ -52,6 +56,8 @@ export default function CennikPage() {
       />
       <Navigation />
       <CennikHero />
+      <CennikPackages />
+      <CennikCare />
       <CennikPrinciples />
       <CennikFactors />
       <CennikFaq />
