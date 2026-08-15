@@ -4,13 +4,23 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { X, ArrowRight, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hasMarketingConsent } from "./cookie-consent";
+import type { ModalContext } from "./modal-provider";
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  context: ModalContext;
 }
 
 type Status = "idle" | "sending" | "success" | "error";
+
+const budgetOptions = [
+  "Do 500 €",
+  "500 – 1 000 €",
+  "1 000 – 2 500 €",
+  "Viac ako 2 500 €",
+  "Neviem, poraďte mi",
+];
 
 // Reflects the modal's state in the URL (?form=open / ?form=submitted) so
 // Google Analytics can pick it up as a trackable pageview/history change,
@@ -29,13 +39,13 @@ function setFormUrlParam(value: "open" | "submitted" | null) {
 // Fires the Meta Pixel "Lead" event client-side and mirrors it to the
 // Conversions API with the same event ID for deduplication. Best-effort —
 // never blocks or fails the actual form submission.
-function trackLeadEvent(email: string, phone: string) {
+function trackLeadEvent(email: string, phone: string, contentName: string) {
   if (typeof window === "undefined" || !hasMarketingConsent()) return;
   const eventId = crypto.randomUUID();
   const eventSourceUrl = window.location.href;
 
   const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
-  fbq?.("track", "Lead", { content_name: "Kontaktný formulár" }, { eventID: eventId });
+  fbq?.("track", "Lead", { content_name: contentName }, { eventID: eventId });
 
   fetch("/api/fb-events", {
     method: "POST",
@@ -44,14 +54,14 @@ function trackLeadEvent(email: string, phone: string) {
       eventName: "Lead",
       eventId,
       eventSourceUrl,
-      contentName: "Kontaktný formulár",
+      contentName,
       email,
       phone,
     }),
   }).catch(() => {});
 }
 
-export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const formLoadedAtRef = useRef<number>(0);
@@ -61,11 +71,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     email: "",
     phone: "",
     message: "",
+    budget: "",
+    features: "",
     honeypot: "", // hidden — bots fill this
   });
 
   const firstInputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const isPackage = context.type === "package";
 
   // Focus trap + ESC close
   useEffect(() => {
@@ -88,7 +101,15 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     if (isOpen) {
       setStatus("idle");
       setErrorMsg("");
-      setForm({ name: "", email: "", phone: "", message: "", honeypot: "" });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: context.type === "package" ? `Mám záujem o balík ${context.packageName}.` : "",
+        budget: "",
+        features: "",
+        honeypot: "",
+      });
       formLoadedAtRef.current = Date.now();
       setFormUrlParam("open");
 
@@ -96,6 +117,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         setFormUrlParam(null);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleOverlayClick = useCallback(
@@ -106,7 +128,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   );
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -117,11 +139,17 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setStatus("sending");
     setErrorMsg("");
 
+    const packageName = isPackage ? context.packageName : undefined;
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, formLoadedAt: formLoadedAtRef.current }),
+        body: JSON.stringify({
+          ...form,
+          packageName,
+          formLoadedAt: formLoadedAtRef.current,
+        }),
       });
 
       const data = await res.json();
@@ -134,7 +162,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       setStatus("success");
       setFormUrlParam("submitted");
-      trackLeadEvent(form.email, form.phone);
+      trackLeadEvent(form.email, form.phone, packageName ?? "Kontaktný formulár");
     } catch {
       setErrorMsg("Odoslanie zlyhalo. Skúste znova alebo napíšte priamo na hello@zjav.sk");
       setStatus("error");
@@ -161,7 +189,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               ZJAV<span className="text-zjav">_</span>
             </span>
             <span className="text-xs font-mono text-muted-foreground border border-zjav/20 px-2 py-0.5">
-              dopyt
+              {isPackage ? `balík: ${context.packageName}` : "dopyt"}
             </span>
           </div>
           <button
@@ -210,6 +238,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               />
 
               <div className="space-y-4">
+                {isPackage && (
+                  <div className="flex items-center gap-2 text-xs font-mono text-zjav border border-zjav/20 bg-zjav/5 px-3 py-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-zjav shrink-0" />
+                    Dopyt k balíku {context.packageName}
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="col-span-2 sm:col-span-1">
                     <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
@@ -255,6 +290,43 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors"
                   />
                 </div>
+
+                {!isPackage && (
+                  <>
+                    <div>
+                      <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                        Aký mám rozpočet na web?
+                      </label>
+                      <select
+                        name="budget"
+                        value={form.budget}
+                        onChange={handleChange}
+                        className="w-full bg-secondary border border-border text-foreground px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors"
+                      >
+                        <option value="">Nevybrané</option>
+                        {budgetOptions.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">
+                        Aké chcem funkcie?
+                      </label>
+                      <textarea
+                        name="features"
+                        value={form.features}
+                        onChange={handleChange}
+                        rows={2}
+                        placeholder="Napr. kontaktný formulár, e-shop, viacjazyčnosť..."
+                        className="w-full bg-secondary border border-border text-foreground placeholder:text-muted-foreground/40 px-4 py-2.5 text-sm font-mono focus:outline-none focus:border-zjav/60 transition-colors resize-none"
+                      />
+                    </div>
+                  </>
+                )}
 
                 <div>
                   <label className="block text-xs font-mono text-muted-foreground mb-1.5 uppercase tracking-wide">

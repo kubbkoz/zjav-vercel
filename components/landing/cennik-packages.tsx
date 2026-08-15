@@ -64,6 +64,7 @@ const packages: Package[] = [
       "Pokročilá SEO optimalizácia + sitemap",
       "Optimalizácia pre AI vyhľadávače (GEO)",
       "Živý Instagram feed + Google recenzie",
+      "Integrácia administrácie obsahu",
       "Cookie lišta, ktorá reálne blokuje skripty",
       "Lighthouse Performance 95+ na mobile",
     ],
@@ -85,7 +86,7 @@ const packages: Package[] = [
   },
 ];
 
-const eshop = {
+export const eshop = {
   name: "E-SHOP_",
   promise: "Shopware 6 na mieru.",
   price: 2490,
@@ -350,11 +351,12 @@ export function CennikPackages() {
               </ul>
 
               <Button
-                onClick={openModal}
+                variant="outline"
+                onClick={() => openModal({ type: "package", packageName: pkg.name })}
                 className={`w-full h-12 rounded-lg font-medium group ${
                   pkg.highlight
-                    ? "bg-zjav hover:bg-zjav-dark text-background glow-zjav"
-                    : "bg-transparent border border-foreground/20 hover:border-zjav hover:text-zjav"
+                    ? "bg-zjav hover:bg-zjav-dark text-background glow-zjav border-transparent"
+                    : "bg-transparent border-foreground/20 hover:border-zjav hover:bg-transparent hover:text-zjav"
                 }`}
               >
                 Chcem prototyp zadarmo
@@ -366,7 +368,7 @@ export function CennikPackages() {
 
         {/* --- E-shop --- */}
         <div
-          className={`mt-px bg-secondary border border-foreground/10 p-8 lg:p-12 transition-all duration-700 delay-500 ${
+          className={`mt-12 lg:mt-16 bg-secondary border border-foreground/10 p-8 lg:p-12 transition-all duration-700 delay-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -416,8 +418,9 @@ export function CennikPackages() {
                 Migrácia dát dohodou
               </p>
               <Button
-                onClick={openModal}
-                className="w-full lg:w-auto h-12 px-6 rounded-lg bg-transparent border border-foreground/20 hover:border-zjav hover:text-zjav font-medium group"
+                variant="outline"
+                onClick={() => openModal({ type: "package", packageName: eshop.name })}
+                className="w-full lg:w-auto h-12 px-6 rounded-lg bg-transparent border-foreground/20 hover:border-zjav hover:bg-transparent hover:text-zjav font-medium group"
               >
                 Chcem e-shop
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -579,11 +582,12 @@ export function CennikCare() {
               </ul>
 
               <Button
-                onClick={openModal}
+                variant="outline"
+                onClick={() => openModal({ type: "package", packageName: plan.name })}
                 className={`w-full h-12 rounded-lg font-medium group ${
                   plan.highlight
-                    ? "bg-zjav hover:bg-zjav-dark text-background glow-zjav"
-                    : "bg-transparent border border-foreground/20 hover:border-zjav hover:text-zjav"
+                    ? "bg-zjav hover:bg-zjav-dark text-background glow-zjav border-transparent"
+                    : "bg-transparent border-foreground/20 hover:border-zjav hover:bg-transparent hover:text-zjav"
                 }`}
               >
                 Mám otázku k starostlivosti

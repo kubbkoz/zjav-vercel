@@ -24,7 +24,7 @@ export function ScrollToTop() {
     <>
       {/* Floating CTA — mobile only, centered */}
       <button
-        onClick={openModal}
+        onClick={() => openModal()}
         aria-label="Náhľad zadarmo"
         className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 sm:hidden flex items-center gap-2 px-6 h-12 rounded-lg bg-zjav text-background font-medium text-sm glow-zjav transition-all duration-300 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"

@@ -75,7 +75,7 @@ export function CtaSection() {
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <Button
                     size="lg"
-                    onClick={openModal}
+                    onClick={() => openModal()}
                     className="bg-zjav hover:bg-zjav-dark text-background px-8 h-14 text-base rounded-lg glow-zjav font-medium group"
                   >
                     Chcem náhľad zadarmo
@@ -84,7 +84,7 @@ export function CtaSection() {
                   <Button
                     size="lg"
                     variant="outline"
-                    onClick={openModal}
+                    onClick={() => openModal()}
                     className="h-14 px-8 text-base rounded-lg border-foreground/20 hover:bg-foreground/5"
                   >
                     Napíšte mi

@@ -76,7 +76,7 @@ export function Navigation() {
             </a>
             <Button
               size="sm"
-              onClick={openModal}
+              onClick={() => openModal()}
               className={`bg-zjav hover:bg-zjav-dark text-background rounded-lg glow-zjav font-medium transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
               Náhľad zadarmo
