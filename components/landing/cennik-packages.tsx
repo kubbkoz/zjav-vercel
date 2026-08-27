@@ -462,7 +462,7 @@ export function CennikPackages() {
           </div>
 
           <p className="mt-10 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-            Ceny sú uvedené bez DPH a predstavujú štartovaciu hodnotu balíka.
+            Ceny sú konečné (nie som platca DPH) a predstavujú štartovaciu hodnotu balíka.
             Garancia rýchlosti sa vzťahuje na Lighthouse Performance skóre
             merané na mobile v deň odovzdania, na obsahu a doméne dodanej
             v rámci projektu. Doplnkové skripty tretích strán pridané po
@@ -602,7 +602,7 @@ export function CennikCare() {
           Starostlivosť je nepovinná a viazaná na mesiac — zrušíte ju kedykoľvek
           k poslednému dňu prebiehajúceho mesiaca, bez výpovednej lehoty a bez
           poplatku. Web ostáva váš aj po zrušení: dostanete repozitár aj dáta a
-          môžete ho presunúť kamkoľvek. Ceny sú bez DPH.
+          môžete ho presunúť kamkoľvek. Ceny sú konečné (nie som platca DPH).
         </p>
       </div>
     </section>

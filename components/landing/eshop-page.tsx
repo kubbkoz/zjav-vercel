@@ -275,7 +275,7 @@ export function EshopPricing() {
         </div>
 
         <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-          Cena je bez DPH a predstavuje štartovaciu hodnotu. Presnú kalkuláciu potvrdíme po
+          Cena je konečná (nie som platca DPH) a predstavuje štartovaciu hodnotu. Presnú kalkuláciu potvrdíme po
           prototype, keď poznáme rozsah produktového katalógu a prípadnú migráciu dát.{" "}
           <Link href="/cennik" className="text-zjav hover:underline underline-offset-4">
             Celý cenník aj s ostatnými balíkmi →
@@ -373,7 +373,7 @@ const faqs = [
   },
   {
     question: "Koľko stojí e-shop na Shopware 6?",
-    answer: `E-shop na Shopware 6 začína od ${eshop.price} € bez DPH. Presnú cenu potvrdíme vopred a transparentne, bez skrytých poplatkov a bez zálohy — podľa rozsahu vášho sortimentu a prípadnej migrácie dát. Najskôr uvidíte prototyp zadarmo.`,
+    answer: `E-shop na Shopware 6 začína od ${eshop.price} € (nie som platca DPH, cena je konečná). Presnú cenu potvrdíme vopred a transparentne, bez skrytých poplatkov a bez zálohy — podľa rozsahu vášho sortimentu a prípadnej migrácie dát. Najskôr uvidíte prototyp zadarmo.`,
   },
   {
     question: "Ako dlho trvá spustenie e-shopu?",
