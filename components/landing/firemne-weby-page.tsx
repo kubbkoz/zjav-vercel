@@ -287,7 +287,7 @@ export function FiremneWebyPricing() {
         </div>
 
         <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-          Ceny sú štartovacie, bez DPH. Konečnú potvrdíme po prototype, keď presne viete, čo dostanete.{" "}
+          Ceny sú štartovacie a konečné (nie som platca DPH). Presnú potvrdíme po prototype, keď presne viete, čo dostanete.{" "}
           <Link href="/cennik" className="text-zjav hover:underline underline-offset-4">
             Celý cenník aj s mesačnou starostlivosťou →
           </Link>
