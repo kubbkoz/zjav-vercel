@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { projects } from "@/lib/projects";
 
 const siteUrl = "https://zjav.sk";
 
@@ -30,5 +31,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...projects.map((project) => ({
+      url: `${siteUrl}/prace/${project.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
   ];
 }

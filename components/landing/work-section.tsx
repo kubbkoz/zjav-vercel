@@ -2,70 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
-
-type Project = {
-  name: string;
-  domain: string;
-  url: string;
-  tagline: string;
-  description: string;
-  tag: string;
-  screenshot?: string;
-};
-
-const projects: Project[] = [
-  {
-    name: "NOVA Reality",
-    domain: "nova.zjav.sk",
-    url: "https://nova.zjav.sk/",
-    tagline: "Priestory, ktoré inšpirujú život.",
-    description:
-      "Web pre realitnú kanceláriu NOVA REALITY — dôveryhodná prezentácia ponuky nehnuteľností s dôrazom na štýl a prémiový dojem.",
-    tag: "Realitná kancelária",
-    screenshot: "/nova-reality-mock.png",
-  },
-  {
-    name: "Robert Novák",
-    domain: "pravnik-landing.vercel.app",
-    url: "https://pravnik-landing.vercel.app/",
-    tagline: "Váš partner pre právne riešenia.",
-    description:
-      "Jednostránková prezentácia advokáta Roberta Nováka — profesionálne právne poradenstvo pre fyzické aj právnické osoby, jasný kontakt a prehľadná ponuka služieb.",
-    tag: "Právne služby",
-  },
-  {
-    name: "Kimo",
-    domain: "kimo-web-one.vercel.app",
-    url: "https://kimo-web-one.vercel.app/",
-    tagline: "Jednoduchá výživa, silnejší výkon.",
-    description:
-      "Web pre značku výživových doplnkov KIMO — čistá, vedecky podložená výživa pre ľudí, ktorí stavajú na disciplíne a dlhodobom výkone.",
-    tag: "Doplnky výživy",
-  },
-  {
-    name: "Káva & Láska",
-    domain: "kava-laska.zjav.sk",
-    url: "https://kava-laska.zjav.sk/",
-    tagline: "Výberová káva v Žiline.",
-    description:
-      "Web pre kaviareň a predajňu kávy v Žiline — menu, atmosféra a miesto, kde si zákazník výberovú kávu kúpi aj vypije.",
-    tag: "Kaviareň",
-  },
-  {
-    name: "11x",
-    domain: "11x-digitalni-pracovnici.vercel.app",
-    url: "https://11x-digitalni-pracovnici.vercel.app/",
-    tagline: "Digitálni pracovníci pre firmy.",
-    description:
-      "AI SDR platforma s digitálnymi pracovníkmi (Alice, Julian, Mike, Nova), ktorí nonstop nájdu kupujúcich, oslovia ich a odovzdajú firme pripravené stretnutia.",
-    tag: "AI / Digital workers",
-  },
-];
+import Link from "next/link";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { projects, type Project } from "@/lib/projects";
 
 function ProjectCard({ project, index, isVisible }: { project: Project; index: number; isVisible: boolean }) {
   return (
-    <div
+    <Link
+      href={`/prace/${project.slug}`}
       className={`group flex flex-col border border-foreground/10 hover:border-zjav/30 bg-background transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
@@ -79,15 +23,20 @@ function ProjectCard({ project, index, isVisible }: { project: Project; index: n
           <div className="w-2.5 h-2.5 rounded-full bg-zjav/40" />
         </div>
         <span className="ml-2 text-xs font-mono text-muted-foreground truncate">{project.domain}</span>
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          aria-label={`Otvoriť ${project.domain} v novej záložke`}
+          className="ml-auto text-muted-foreground/60 hover:text-zjav transition-colors"
+        >
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
       </div>
 
       {/* Screenshot / placeholder */}
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative block aspect-[16/10] bg-secondary overflow-hidden"
-      >
+      <div className="relative block aspect-[16/10] bg-secondary overflow-hidden">
         {project.screenshot ? (
           <Image
             src={project.screenshot}
@@ -103,24 +52,19 @@ function ProjectCard({ project, index, isVisible }: { project: Project; index: n
             <span className="font-display text-2xl uppercase text-muted-foreground/30">{project.name}</span>
           </div>
         )}
-      </a>
+      </div>
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
         <span className="text-xs font-mono uppercase tracking-widest text-zjav mb-3">{project.tag}</span>
         <h3 className="font-display text-xl uppercase tracking-tight mb-2">{project.tagline}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{project.description}</p>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-mono text-foreground/80 hover:text-zjav transition-colors group/link"
-        >
-          Navštíviť
-          <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-        </a>
+        <span className="inline-flex items-center gap-1.5 text-sm font-mono text-foreground/80 group-hover:text-zjav transition-colors">
+          Case study
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
