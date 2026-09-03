@@ -8,7 +8,6 @@ import { useModal } from "./modal-provider";
 const navLinks: { name: string; href: string }[] = [
   { name: "Ako to funguje", href: "/#how-it-works" },
   { name: "Čo získate", href: "/#features" },
-  { name: "Technológie", href: "/#developers" },
   { name: "Referencie", href: "/#testimonials" },
   { name: "Práce", href: "/#work" },
   { name: "Cenník", href: "/cennik" },

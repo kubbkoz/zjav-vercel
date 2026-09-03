@@ -16,39 +16,39 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "NOVA",
+    name: "NOVA Reality",
     domain: "nova.zjav.sk",
     url: "https://nova.zjav.sk/",
-    tagline: "Prémiová realitná kancelária.",
+    tagline: "Priestory, ktoré inšpirujú život.",
     description:
-      "Web pre realitnú kanceláriu postavený na dôveryhodnosti a prémiovej prezentácii ponúk nehnuteľností.",
+      "Web pre realitnú kanceláriu NOVA REALITY — dôveryhodná prezentácia ponuky nehnuteľností s dôrazom na štýl a prémiový dojem.",
     tag: "Realitná kancelária",
   },
   {
-    name: "Právnik",
+    name: "Robert Novák",
     domain: "pravnik-landing.vercel.app",
     url: "https://pravnik-landing.vercel.app/",
-    tagline: "Prezentačná stránka pre právnika.",
+    tagline: "Váš partner pre právne riešenia.",
     description:
-      "Jednostránková prezentácia budujúca dôveru — jasný kontakt a prehľadná ponuka právnych služieb.",
-    tag: "Firemný web",
+      "Jednostránková prezentácia advokáta Roberta Nováka — profesionálne právne poradenstvo pre fyzické aj právnické osoby, jasný kontakt a prehľadná ponuka služieb.",
+    tag: "Právne služby",
   },
   {
     name: "Kimo",
     domain: "kimo-web-one.vercel.app",
     url: "https://kimo-web-one.vercel.app/",
-    tagline: "Kvalitné doplnky výživy.",
+    tagline: "Jednoduchá výživa, silnejší výkon.",
     description:
-      "Web pre značku výživových doplnkov s dôrazom na produkt a prehľadnú prezentáciu ponuky.",
+      "Web pre značku výživových doplnkov KIMO — čistá, vedecky podložená výživa pre ľudí, ktorí stavajú na disciplíne a dlhodobom výkone.",
     tag: "Doplnky výživy",
   },
   {
     name: "Káva & Láska",
     domain: "kava-laska.zjav.sk",
     url: "https://kava-laska.zjav.sk/",
-    tagline: "Kaviareň a predajňa kávy.",
+    tagline: "Výberová káva v Žiline.",
     description:
-      "Web pre kaviareň a predajňu kávy — menu, atmosféra a miesto, kde si zákazník kávu kúpi aj vypije.",
+      "Web pre kaviareň a predajňu kávy v Žiline — menu, atmosféra a miesto, kde si zákazník výberovú kávu kúpi aj vypije.",
     tag: "Kaviareň",
   },
   {
@@ -57,7 +57,7 @@ const projects: Project[] = [
     url: "https://11x-digitalni-pracovnici.vercel.app/",
     tagline: "Digitálni pracovníci pre firmy.",
     description:
-      "Prezentácia služby digitálnych pracovníkov (AI agentov), ktorí firmám automatizujú opakujúcu sa prácu.",
+      "AI SDR platforma s digitálnymi pracovníkmi (Alice, Julian, Mike, Nova), ktorí nonstop nájdu kupujúcich, oslovia ich a odovzdajú firme pripravené stretnutia.",
     tag: "AI / Digital workers",
   },
 ];
