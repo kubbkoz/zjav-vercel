@@ -8,6 +8,7 @@ import { IntegrationsSection } from "@/components/landing/integrations-section";
 import { SecuritySection } from "@/components/landing/security-section";
 import { DevelopersSection } from "@/components/landing/developers-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
+import { WorkSection } from "@/components/landing/work-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
 import { FooterSection } from "@/components/landing/footer-section";
@@ -25,6 +26,7 @@ export default async function Home() {
       <SecuritySection />
       <DevelopersSection />
       <TestimonialsSection />
+      <WorkSection />
       <FaqSection />
       <CtaSection />
       <FooterSection />

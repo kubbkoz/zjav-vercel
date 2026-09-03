@@ -10,6 +10,7 @@ const footerLinks = {
     { name: "Čo získate", href: "/#features" },
     { name: "Technológie", href: "/#developers" },
     { name: "Referencie", href: "/#testimonials" },
+    { name: "Práce", href: "/#work" },
     { name: "Cenník", href: "/cennik" },
   ],
   "Riešenia": [

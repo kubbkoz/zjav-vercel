@@ -51,11 +51,11 @@ const projects = [
   },
   {
     name: "Káva & Láska",
-    url: null,
+    url: "https://kava-laska.zjav.sk",
     logo: "/logos/kava-a-laska.png",
     logoWidth: 120,
     logoHeight: 32,
-    status: "soon" as const,
+    status: "live" as const,
     tag: "Firemný web / E-shop",
   },
 ];
