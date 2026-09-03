@@ -23,6 +23,7 @@ const projects: Project[] = [
     description:
       "Web pre realitnú kanceláriu NOVA REALITY — dôveryhodná prezentácia ponuky nehnuteľností s dôrazom na štýl a prémiový dojem.",
     tag: "Realitná kancelária",
+    screenshot: "/nova-reality-mock.png",
   },
   {
     name: "Robert Novák",
