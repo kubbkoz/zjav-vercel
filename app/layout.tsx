@@ -5,7 +5,11 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ModalProvider } from '@/components/landing/modal-provider'
 import { FacebookPixel } from '@/components/landing/facebook-pixel'
+import { MaintenancePage } from '@/components/landing/maintenance-page'
 import './globals.css'
+
+// Toggle this to true to take the whole site into maintenance mode.
+const MAINTENANCE_MODE = true
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -128,11 +132,6 @@ const jsonLd = {
         addressLocality: 'Suchá Hora',
         addressCountry: 'SK',
       },
-      identifier: {
-        '@type': 'PropertyValue',
-        name: 'IČO',
-        value: '50532596',
-      },
       sameAs: [
         'https://www.instagram.com/zjav.sk',
         'https://www.facebook.com/profile.php?id=61590535290157',
@@ -166,7 +165,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${oxanium.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <ModalProvider>{children}</ModalProvider>
+        {MAINTENANCE_MODE ? (
+          <MaintenancePage />
+        ) : (
+          <ModalProvider>{children}</ModalProvider>
+        )}
         <Analytics />
         <SpeedInsights />
         <FacebookPixel />
