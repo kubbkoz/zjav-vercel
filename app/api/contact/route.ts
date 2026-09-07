@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
           </div>
           <p style="color:#a0abcb; margin-top:32px;">Jakub<br/><span style="color:#00cfe8;">zjav.sk</span></p>
           <div style="margin-top:24px; padding-top:16px; border-top:1px solid #1e3a5f; color:#4a5568; font-size:11px;">
-            ZJAV_ · zjav.sk · IČO: 50532596
+            ZJAV_ · zjav.sk
           </div>
         </div>
       `,
