@@ -37,19 +37,19 @@ export function MaintenancePage() {
       </div>
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <a href="/" className="inline-flex items-center gap-3 mb-10">
+        <a href="/" className="flex items-center justify-center gap-3 mb-6">
           <span className="text-2xl font-display uppercase tracking-tight">
             ZJAV<span className="text-zjav text-glow-zjav">_</span>
           </span>
           <span className="text-xs text-muted-foreground font-mono">zjav.sk</span>
         </a>
 
-        <span className="inline-flex items-center gap-3 rounded-lg border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav mb-8">
+        <span className="flex items-center justify-center gap-3 rounded-lg border border-zjav/30 bg-zjav/5 px-4 py-2 text-sm font-mono uppercase tracking-wide text-zjav mb-8 mx-auto w-fit">
           <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
           Prebieha údržba
         </span>
 
-        <h1 className="text-[clamp(2.5rem,9vw,6rem)] font-display uppercase leading-[0.95] tracking-tight mb-6">
+        <h1 className="text-[clamp(2.5rem,9vw,6rem)] font-display uppercase leading-[1.2] tracking-tight mb-6">
           Web je aktuálne
           <br />
           v <span className="text-zjav text-glow-zjav">údržbe</span>.
