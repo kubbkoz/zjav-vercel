@@ -5,10 +5,11 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ModalProvider } from '@/components/landing/modal-provider'
 import { FacebookPixel } from '@/components/landing/facebook-pixel'
-import { MaintenancePage } from '@/components/landing/maintenance-page'
+import { MaintenanceGate } from '@/components/landing/maintenance-gate'
 import './globals.css'
 
-// Toggle this to true to take the whole site into maintenance mode.
+// Toggle this to true to take the site into maintenance mode. Routes listed in
+// maintenance-gate.tsx (e.g. /case-studies) stay publicly reachable.
 const MAINTENANCE_MODE = true
 
 const inter = Inter({ 
@@ -166,7 +167,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${oxanium.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {MAINTENANCE_MODE ? (
-          <MaintenancePage />
+          <MaintenanceGate>
+            <ModalProvider>{children}</ModalProvider>
+          </MaintenanceGate>
         ) : (
           <ModalProvider>{children}</ModalProvider>
         )}
