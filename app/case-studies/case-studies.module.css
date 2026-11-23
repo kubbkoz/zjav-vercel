@@ -7,8 +7,8 @@
   --fg: #ffffff;
   --fg-72: rgba(255, 255, 255, 0.72);
   --fg-50: rgba(255, 255, 255, 0.5);
-  --lime: #f1fc86;
-  --lime-2: #e9f56b;
+  --accent: #00cfff;
+  --accent-2: #0099cc;
   --ink: #18181d;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ff: var(--font-archivo), "Archivo", system-ui, sans-serif;
@@ -29,7 +29,7 @@
 }
 
 .page a:focus-visible {
-  outline: 2px solid var(--lime);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
@@ -53,7 +53,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--lime);
+  background: var(--accent);
 }
 .count {
   font-family: var(--ff-mono);
@@ -67,7 +67,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: var(--lime);
+  background: var(--accent);
   color: var(--ink);
   font-family: var(--ff-mono);
   font-size: clamp(12px, 1.4vw, 14px);
@@ -112,7 +112,7 @@
   transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
 }
 .profile:hover {
-  border-color: rgba(241, 252, 134, 0.5);
+  border-color: rgba(0, 207, 255, 0.5);
   background: var(--card-2);
 }
 .avatar {
@@ -120,7 +120,7 @@
   width: clamp(76px, 15vw, 168px);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: clamp(3px, 0.5vw, 6px) solid var(--lime);
+  border: clamp(3px, 0.5vw, 6px) solid var(--accent);
   overflow: hidden;
   background: var(--card-2);
 }
@@ -305,11 +305,11 @@
   opacity: 0.72;
 }
 .pillPrimary {
-  background: var(--lime);
+  background: var(--accent);
   color: var(--ink);
 }
 .pillPrimary:hover {
-  background: var(--lime-2);
+  background: var(--accent-2);
 }
 .pillGhost {
   min-height: 56px;
@@ -327,7 +327,7 @@
   height: 48px;
   border-radius: 50%;
   background: var(--ink);
-  color: var(--lime);
+  color: var(--accent);
   transition: transform 0.4s var(--ease);
 }
 .pillGhost .arrow {
@@ -373,8 +373,8 @@
   background: var(--fg);
 }
 .trail i:last-child {
-  background: var(--lime);
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--lime);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent);
 }
 .foot {
   display: flex;
@@ -393,7 +393,7 @@
   text-decoration: none;
 }
 .foot a:hover {
-  color: var(--lime);
+  color: var(--accent);
 }
 
 /* ── Entrance ────────────────────────────────────────── */
