@@ -54,4 +54,20 @@ export const caseStudies: CaseStudy[] = [
     cover: "/case-studies/avora.jpg",
     accent: "#F1FC86",
   },
+  {
+    slug: "finro",
+    name: "FINRO",
+    domain: "finro.sk",
+    liveUrl: "https://finro.sk/",
+    caseStudyUrl: "https://finro.sk/case-study/",
+    manualUrl: "https://finro.sk/case-study/manual/",
+    tag: "Aplikácia na financie domácnosti",
+    year: "2026",
+    headline: "Z bločkov, výpisov a dohadovania jedno číslo.",
+    description:
+      "Peniaze domácnosti ležia na troch miestach: bloček v peňaženke, výpis v banke, zvyšok v hlave. FINRO ich dá do jedného prehľadu pre celú rodinu. Case study ukazuje landing aj appku: F z troch tyčí, štyri farby v pomere 60 · 28 · 10 · 2, výdavky bez červenej a AI agenta Kompass ako jediný fialový prvok.",
+    scope: ["Insighty", "Symbol a identita", "Brand manuál", "Landing", "Appka SK/EN"],
+    cover: "/case-studies/finro.jpg",
+    accent: "#10B981",
+  },
 ];
