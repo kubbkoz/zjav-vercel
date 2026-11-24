@@ -70,4 +70,20 @@ export const caseStudies: CaseStudy[] = [
     cover: "/case-studies/finro.jpg",
     accent: "#10B981",
   },
+  {
+    slug: "sustco",
+    name: "SUSTCO",
+    domain: "sustco.zjav.sk",
+    liveUrl: "https://sustco.zjav.sk/",
+    caseStudyUrl: "https://sustco.zjav.sk/case-study/",
+    manualUrl: "https://sustco.zjav.sk/case-study/manual/",
+    tag: "Udržateľná výstavba",
+    year: "2026",
+    headline: "Ekológia v číslach, nie v prívlastkoch.",
+    description:
+      "Stavebníctvo trpí greenwashingom: slová „eko“ a „zelený“ bez dôkazu nič nepredajú. SUSTCO preto stojí na mriežke zo stavebného výkresu, každé tvrdenie má jednotku a každá stavba vlastný uhlíkový pas. Trojjazyčný web s 12 projektmi v 3 krajinách, interaktívnymi 3D pôdorysmi a pohybom, ktorý stavia ako stavbyvedúci — bez jediného frameworku.",
+    scope: ["Brand analýza", "Symbol a identita", "Brand manuál", "Web SK/EN/PL", "3D pôdorysy"],
+    cover: "/case-studies/sustco.jpg",
+    accent: "#22993A",
+  },
 ];
