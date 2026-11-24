@@ -19,7 +19,7 @@ const pageUrl = `${siteUrl}/case-studies`;
 const instagramUrl = "https://www.instagram.com/zjavka.jakub/";
 const title = "Case studies by zjav studio";
 const description =
-  "Značky a weby od zadania po ostrý web. Case studies projektov BUILDTECH, Avora Tatry a FINRO — s odklikom na živý web.";
+  "Značky a weby od zadania po ostrý web. Case studies projektov BUILDTECH, Avora Tatry, FINRO a SUSTCO — s odklikom na živý web.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
