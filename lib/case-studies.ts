@@ -86,4 +86,20 @@ export const caseStudies: CaseStudy[] = [
     cover: "/case-studies/sustco.jpg",
     accent: "#22993A",
   },
+  {
+    slug: "lyv",
+    name: "LYV",
+    domain: "lyv.zjav.sk",
+    liveUrl: "https://lyv.zjav.sk/",
+    caseStudyUrl: "https://lyv.zjav.sk/case-study/",
+    manualUrl: "https://lyv.zjav.sk/case-study/manual/",
+    tag: "Koncept značky elektrických áut",
+    year: "2026",
+    headline: "Toto auto neexistuje. Jeho web áno.",
+    description:
+      "Elektrické auto je tiché, jeho weby väčšinou nie: veľa čísel, veľa farieb a všetko rovnako nahlas. LYV (čítaj „live“) je koncept značky a promo web pre jej prvý model LYV 7 — jedna akcentová farba, ostré rohy a vety, ktoré povedia číslo a skončia. Od mena cez brand manuál po konfigurátor s pätnástimi rendermi auta, v troch jazykoch a bez buildu.",
+    scope: ["Meno značky", "Symbol a identita", "Brand manuál", "Promo web EN/SK/PL", "Konfigurátor"],
+    cover: "/case-studies/lyv.jpg",
+    accent: "#B9EF16",
+  },
 ];
