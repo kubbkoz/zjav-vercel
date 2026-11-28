@@ -102,4 +102,20 @@ export const caseStudies: CaseStudy[] = [
     cover: "/case-studies/lyv.jpg",
     accent: "#B9EF16",
   },
+  {
+    slug: "wellspace",
+    name: "Well Space",
+    domain: "wellspace.zjav.sk",
+    liveUrl: "https://wellspace.zjav.sk/",
+    caseStudyUrl: "https://wellspace.zjav.sk/case-study",
+    manualUrl: "https://wellspace.zjav.sk/brand",
+    tag: "Koncept realitného štúdia",
+    year: "2026",
+    headline: "Predávať domov, nie metre štvorcové.",
+    description:
+      "Realitný web, ktorý pôsobí draho, ale nehovorí nič konkrétne: claim bez obsahu, čísla bez opory, šedé texty a jeden jazyk. Well Space je koncept značky pre Bratislavu, Krakov a Tatry — hranaté srdce z dvoch striech ako symbol, jedna modrá pre akciu a jedna cesta ku kontaktu. Deväť projektov, tri jazyky a web bez buildu.",
+    scope: ["Symbol a identita", "Brand manuál", "Web EN/SK/PL", "9 projektov", "Kontaktný formulár"],
+    cover: "/case-studies/wellspace.jpg",
+    accent: "#2A36FF",
+  },
 ];
